@@ -20,7 +20,7 @@
             overflow: hidden;
         }
         .subject-content.active {
-            max-height: 1000px; /* Ajustar si el contenido es muy largo */
+            max-height: 2000px;
             opacity: 1;
         }
         .rotate-icon {
@@ -31,32 +31,32 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+<body class="bg-gray-900 text-gray-200 antialiased flex flex-col min-h-screen">
 
     <!-- Navegación -->
-    <nav class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+    <nav class="bg-gray-800 text-white shadow-md sticky top-0 z-50 border-b border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <i class="fas fa-server text-2xl mr-2"></i>
+                    <i class="fas fa-server text-blue-500 text-2xl mr-2"></i>
                     <span class="font-bold text-xl tracking-tight">TestASIR 2026</span>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#asignaturas" class="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition">Asignaturas</a>
-                    <a href="#contacto" class="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition">Contacto</a>
+                    <a href="#asignaturas" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium transition">Asignaturas</a>
+                    <a href="#contacto" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium transition">Contacto</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Header / Hero Section -->
-    <header class="bg-white border-b border-gray-200">
+    <header class="bg-gray-800 border-b border-gray-700">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span class="block text-blue-600">Simulacros de Exámenes</span>
+            <h1 class="text-4xl font-extrabold text-gray-100 sm:text-5xl md:text-6xl">
+                <span class="block text-blue-500">Simulacros de Exámenes</span>
                 <span class="block">2º Curso ASIR</span>
             </h1>
-            <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+            <p class="mt-4 max-w-2xl text-xl text-gray-400 mx-auto">
                 Prepárate para superar el ciclo superior de Administración de Sistemas Informáticos en Red con nuestros tests actualizados para el año 2026.
             </p>
             <div class="mt-10 flex justify-center gap-4">
@@ -70,36 +70,34 @@
     <!-- Contenido Principal - Asignaturas -->
     <main id="asignaturas" class="flex-grow max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 w-full">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-gray-900">Selecciona tu Asignatura</h2>
-            <p class="mt-4 text-lg text-gray-500">Despliega cada módulo para ver los tests disponibles.</p>
+            <h2 class="text-3xl font-extrabold text-gray-100">Selecciona tu Asignatura</h2>
+            <p class="mt-4 text-lg text-gray-400">Despliega cada módulo para ver los tests disponibles.</p>
         </div>
 
         <div class="space-y-4">
             
             <!-- Asignatura 1: ASO -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition" onclick="toggleSubject('aso')">
+            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('aso')">
                     <div class="flex items-center">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4 text-blue-600">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-blue-400">
                             <i class="fab fa-linux text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 text-left">Administración de Sistemas Operativos (ASO)</h3>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Administración de Sistemas Operativos (ASO)</h3>
                     </div>
-                    <i id="icon-aso" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    <i id="icon-aso" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
                 </button>
-                <div id="content-aso" class="subject-content bg-gray-50 border-t border-gray-100">
+                <div id="content-aso" class="subject-content bg-gray-900 border-t border-gray-700">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Simulacros sobre administración de Windows Server, Linux (Ubuntu/Debian), gestión de usuarios, procesos, etc.</p>
+                        <p class="text-gray-400 mb-4">Simulacros sobre administración de Windows Server, Linux (Ubuntu/Debian), gestión de usuarios, procesos, etc.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-aso">
-                            <!-- Test 1 -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition cursor-pointer" onclick="openTest('aso_1')">
-                                <span class="font-medium text-gray-800">Test 1: Scripting y Backups</span>
-                                <button class="text-blue-600 hover:text-blue-800 focus:outline-none"><i class="fas fa-play"></i></button>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('aso_1')">
+                                <span class="font-medium text-gray-200">Test 1: Scripting y Backups</span>
+                                <button class="text-blue-400 hover:text-blue-300 focus:outline-none"><i class="fas fa-play"></i></button>
                             </div>
-                            <!-- Test 2 -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition cursor-pointer" onclick="openTest('aso_2')">
-                                <span class="font-medium text-gray-800">Test 2: AD, Samba, NFS y Kerberos</span>
-                                <button class="text-blue-600 hover:text-blue-800 focus:outline-none"><i class="fas fa-play"></i></button>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('aso_2')">
+                                <span class="font-medium text-gray-200">Test 2: AD, Samba, NFS y Kerberos</span>
+                                <button class="text-blue-400 hover:text-blue-300 focus:outline-none"><i class="fas fa-play"></i></button>
                             </div>
                         </div>
                     </div>
@@ -107,23 +105,22 @@
             </div>
 
             <!-- Asignatura 2: SRI -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition" onclick="toggleSubject('sri')">
+            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('sri')">
                     <div class="flex items-center">
-                        <div class="bg-green-100 p-3 rounded-full mr-4 text-green-600">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-green-400">
                             <i class="fas fa-network-wired text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 text-left">Servicios de Red e Internet (SRI)</h3>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Servicios de Red e Internet (SRI)</h3>
                     </div>
-                    <i id="icon-sri" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    <i id="icon-sri" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
                 </button>
-                <div id="content-sri" class="subject-content bg-gray-50 border-t border-gray-100">
+                <div id="content-sri" class="subject-content bg-gray-900 border-t border-gray-700">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Tests sobre DNS, DHCP, servidores web (Apache/Nginx), FTP, correo electrónico, etc.</p>
+                        <p class="text-gray-400 mb-4">Tests sobre DNS, DHCP, servidores web (Apache/Nginx), FTP, correo electrónico, etc.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-sri">
-                            <!-- Los tests se inyectarán aquí -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition">
-                                <span class="font-medium">Esperando contenido...</span>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center">
+                                <span class="font-medium text-gray-400">Esperando contenido...</span>
                             </div>
                         </div>
                     </div>
@@ -131,23 +128,22 @@
             </div>
 
             <!-- Asignatura 3: SAD -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition" onclick="toggleSubject('sad')">
+            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('sad')">
                     <div class="flex items-center">
-                        <div class="bg-red-100 p-3 rounded-full mr-4 text-red-600">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-red-400">
                             <i class="fas fa-shield-alt text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 text-left">Seguridad y Alta Disponibilidad (SAD)</h3>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Seguridad y Alta Disponibilidad (SAD)</h3>
                     </div>
-                    <i id="icon-sad" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    <i id="icon-sad" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
                 </button>
-                <div id="content-sad" class="subject-content bg-gray-50 border-t border-gray-100">
+                <div id="content-sad" class="subject-content bg-gray-900 border-t border-gray-700">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Evaluaciones sobre criptografía, cortafuegos, copias de seguridad, clusters, etc.</p>
+                        <p class="text-gray-400 mb-4">Evaluaciones sobre criptografía, cortafuegos, copias de seguridad, clusters, etc.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-sad">
-                            <!-- Los tests se inyectarán aquí -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition">
-                                <span class="font-medium">Esperando contenido...</span>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center">
+                                <span class="font-medium text-gray-400">Esperando contenido...</span>
                             </div>
                         </div>
                     </div>
@@ -155,53 +151,55 @@
             </div>
 
              <!-- Asignatura 4: IAW -->
-             <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition" onclick="toggleSubject('iaw')">
+             <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('iaw')">
                     <div class="flex items-center">
-                        <div class="bg-purple-100 p-3 rounded-full mr-4 text-purple-600">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-purple-400">
                             <i class="fas fa-laptop-code text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 text-left">Implantación de Aplicaciones Web (IAW)</h3>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Implantación de Aplicaciones Web (IAW)</h3>
                     </div>
-                    <i id="icon-iaw" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    <i id="icon-iaw" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
                 </button>
-                <div id="content-iaw" class="subject-content bg-gray-50 border-t border-gray-100">
+                <div id="content-iaw" class="subject-content bg-gray-900 border-t border-gray-700">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Tests sobre PHP, bases de datos web, CMS (WordPress, Moodle), despliegue de aplicaciones, etc.</p>
+                        <p class="text-gray-400 mb-4">Tests sobre PHP, bases de datos web, CMS (WordPress, Moodle), despliegue de aplicaciones, etc.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-iaw">
-                            <!-- Los tests se inyectarán aquí -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition">
-                                <span class="font-medium">Esperando contenido...</span>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('iaw_1')">
+                                <span class="font-medium text-gray-200">Test 1: HTML, CSS y JS</span>
+                                <button class="text-purple-400 hover:text-purple-300 focus:outline-none"><i class="fas fa-play"></i></button>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('iaw_2')">
+                                <span class="font-medium text-gray-200">Test 2: PHP y MySQLi</span>
+                                <button class="text-purple-400 hover:text-purple-300 focus:outline-none"><i class="fas fa-play"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Asignatura 5: BD (Administración de Sistemas Gestores de Bases de Datos) -->
-             <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition" onclick="toggleSubject('asgbd')">
+            <!-- Asignatura 5: ASGBD -->
+             <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('asgbd')">
                     <div class="flex items-center">
-                        <div class="bg-yellow-100 p-3 rounded-full mr-4 text-yellow-600">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-yellow-500">
                             <i class="fas fa-database text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 text-left">Administración de Sistemas Gestores de Bases de Datos (ASGBD)</h3>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Administración de Sistemas Gestores de Bases de Datos (ASGBD)</h3>
                     </div>
-                    <i id="icon-asgbd" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    <i id="icon-asgbd" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
                 </button>
-                <div id="content-asgbd" class="subject-content bg-gray-50 border-t border-gray-100">
+                <div id="content-asgbd" class="subject-content bg-gray-900 border-t border-gray-700">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Simulacros sobre instalación, configuración, seguridad y mantenimiento de SGBD (MySQL/MariaDB, Oracle, etc.).</p>
+                        <p class="text-gray-400 mb-4">Simulacros sobre instalación, configuración, seguridad y mantenimiento de SGBD (MySQL/MariaDB, Oracle, etc.).</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-asgbd">
-                            <!-- Test 1 -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition cursor-pointer" onclick="openTest('asgbd_1')">
-                                <span class="font-medium text-gray-800">Test 1: Conceptos Básicos y PL/SQL</span>
-                                <button class="text-blue-600 hover:text-blue-800 focus:outline-none"><i class="fas fa-play"></i></button>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('asgbd_1')">
+                                <span class="font-medium text-gray-200">Test 1: Conceptos Básicos y PL/SQL</span>
+                                <button class="text-yellow-500 hover:text-yellow-400 focus:outline-none"><i class="fas fa-play"></i></button>
                             </div>
-                            <!-- Test 2 -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition cursor-pointer" onclick="openTest('asgbd_2')">
-                                <span class="font-medium text-gray-800">Test 2: Rendimiento, Backups y Scripts</span>
-                                <button class="text-blue-600 hover:text-blue-800 focus:outline-none"><i class="fas fa-play"></i></button>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('asgbd_2')">
+                                <span class="font-medium text-gray-200">Test 2: Rendimiento, Backups y Scripts</span>
+                                <button class="text-yellow-500 hover:text-yellow-400 focus:outline-none"><i class="fas fa-play"></i></button>
                             </div>
                         </div>
                     </div>
@@ -209,23 +207,22 @@
             </div>
 
             <!-- Asignatura 6: EIE -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition" onclick="toggleSubject('eie')">
+            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('eie')">
                     <div class="flex items-center">
-                        <div class="bg-orange-100 p-3 rounded-full mr-4 text-orange-600">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-orange-400">
                             <i class="fas fa-briefcase text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 text-left">Empresa e Iniciativa Emprendedora (EIE)</h3>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Empresa e Iniciativa Emprendedora (EIE)</h3>
                     </div>
-                    <i id="icon-eie" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    <i id="icon-eie" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
                 </button>
-                <div id="content-eie" class="subject-content bg-gray-50 border-t border-gray-100">
+                <div id="content-eie" class="subject-content bg-gray-900 border-t border-gray-700">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Tests sobre planes de empresa, formas jurídicas, contabilidad básica y emprendimiento.</p>
+                        <p class="text-gray-400 mb-4">Tests sobre planes de empresa, formas jurídicas, contabilidad básica y emprendimiento.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-eie">
-                            <!-- Los tests se inyectarán aquí -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition">
-                                <span class="font-medium">Esperando contenido...</span>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center">
+                                <span class="font-medium text-gray-400">Esperando contenido...</span>
                             </div>
                         </div>
                     </div>
@@ -233,29 +230,55 @@
             </div>
 
             <!-- Asignatura 7: DASP -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition" onclick="toggleSubject('dasp')">
+            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('dasp')">
                     <div class="flex items-center">
-                        <div class="bg-teal-100 p-3 rounded-full mr-4 text-teal-600">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-teal-400">
                             <i class="fas fa-microchip text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 text-left">Digitalización Aplicada a los Sectores Productivos (DASP)</h3>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Digitalización Aplicada a los Sectores Productivos (DASP)</h3>
                     </div>
-                    <i id="icon-dasp" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    <i id="icon-dasp" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
                 </button>
-                <div id="content-dasp" class="subject-content bg-gray-50 border-t border-gray-100">
+                <div id="content-dasp" class="subject-content bg-gray-900 border-t border-gray-700">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Simulacros sobre Industria 4.0/5.0, IoT, Cloud, Inteligencia Artificial, Big Data y transformación digital.</p>
+                        <p class="text-gray-400 mb-4">Simulacros sobre Industria 4.0/5.0, IoT, Cloud, Inteligencia Artificial, Big Data y transformación digital.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-dasp">
-                            <!-- Test 1 -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition cursor-pointer" onclick="openTest('dasp_1')">
-                                <span class="font-medium text-gray-800">Test 1: IT/OT, IoT, Cloud e IA</span>
-                                <button class="text-blue-600 hover:text-blue-800 focus:outline-none"><i class="fas fa-play"></i></button>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('dasp_1')">
+                                <span class="font-medium text-gray-200">Test 1: IT/OT, IoT, Cloud e IA</span>
+                                <button class="text-teal-400 hover:text-teal-300 focus:outline-none"><i class="fas fa-play"></i></button>
                             </div>
-                            <!-- Test 2 -->
-                            <div class="bg-white p-4 rounded border border-gray-200 flex justify-between items-center hover:shadow-md transition cursor-pointer" onclick="openTest('dasp_2')">
-                                <span class="font-medium text-gray-800">Test 2: Machine Learning, Big Data y Estrategia</span>
-                                <button class="text-blue-600 hover:text-blue-800 focus:outline-none"><i class="fas fa-play"></i></button>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('dasp_2')">
+                                <span class="font-medium text-gray-200">Test 2: Machine Learning, Big Data y Estrategia</span>
+                                <button class="text-teal-400 hover:text-teal-300 focus:outline-none"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asignatura 8: Inglés Profesional -->
+            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('ing')">
+                    <div class="flex items-center">
+                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-pink-400">
+                            <i class="fas fa-language text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-100 text-left">Inglés Profesional (ING)</h3>
+                    </div>
+                    <i id="icon-ing" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
+                </button>
+                <div id="content-ing" class="subject-content bg-gray-900 border-t border-gray-700">
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-4">Tests de inglés técnico, vocabulario laboral, correos electrónicos y llamadas telefónicas.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-ing">
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('ing_1')">
+                                <span class="font-medium text-gray-200">Test 1: Entorno Laboral y Puestos</span>
+                                <button class="text-pink-400 hover:text-pink-300 focus:outline-none"><i class="fas fa-play"></i></button>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('ing_2')">
+                                <span class="font-medium text-gray-200">Test 2: Teléfono y Correo Electrónico</span>
+                                <button class="text-pink-400 hover:text-pink-300 focus:outline-none"><i class="fas fa-play"></i></button>
                             </div>
                         </div>
                     </div>
@@ -266,22 +289,22 @@
     </main>
 
     <!-- Modal para el Test -->
-    <div id="testModal" class="fixed inset-0 z-50 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-3xl rounded-xl shadow-2xl flex flex-col max-h-[90vh]">
-            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-blue-50 rounded-t-xl">
+    <div id="testModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-80 flex items-center justify-center p-4">
+        <div class="bg-gray-800 w-full max-w-3xl rounded-xl shadow-2xl flex flex-col max-h-[90vh] border border-gray-700">
+            <div class="px-6 py-4 border-b border-gray-700 flex justify-between items-center bg-gray-900 rounded-t-xl">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-900" id="modalTitle">Título del Test</h3>
-                    <p class="text-sm text-gray-500 font-medium mt-1" id="questionProgress"></p>
+                    <h3 class="text-xl font-bold text-gray-100" id="modalTitle">Título del Test</h3>
+                    <p class="text-sm text-gray-400 font-medium mt-1" id="questionProgress"></p>
                 </div>
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 focus:outline-none">
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-200 focus:outline-none">
                     <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
-            <div class="p-6 overflow-y-auto flex-grow" id="modalContent">
+            <div class="p-6 overflow-y-auto flex-grow text-gray-200" id="modalContent">
                 <!-- El contenido de la pregunta irá aquí -->
             </div>
-            <div class="px-6 py-4 border-t border-gray-200 bg-gray-50 flex justify-between items-center rounded-b-xl" id="modalFooter">
-                <div id="scoreDisplay" class="font-bold text-gray-700 hidden"></div>
+            <div class="px-6 py-4 border-t border-gray-700 bg-gray-900 flex justify-between items-center rounded-b-xl" id="modalFooter">
+                <div id="scoreDisplay" class="font-bold text-gray-300 hidden"></div>
                 <div class="ml-auto" id="actionButtons">
                     <!-- Botones de Comprobar / Siguiente -->
                 </div>
@@ -290,14 +313,14 @@
     </div>
 
     <!-- Footer -->
-    <footer id="contacto" class="bg-gray-800 text-white mt-auto">
+    <footer id="contacto" class="bg-gray-950 text-white border-t border-gray-800 mt-auto">
         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <span class="font-bold text-lg">TestASIR 2026</span>
-                    <p class="text-gray-400 text-sm mt-1">Plataforma de simulacros no oficial.</p>
+                    <span class="font-bold text-lg text-gray-200">TestASIR 2026</span>
+                    <p class="text-gray-500 text-sm mt-1">Plataforma de simulacros no oficial.</p>
                 </div>
-                <div class="text-sm text-gray-400">
+                <div class="text-sm text-gray-500">
                     &copy; 2026 TestASIR. Todos los derechos reservados.
                 </div>
             </div>
@@ -308,6 +331,76 @@
     <script>
         // --- BASE DE DATOS DE TESTS CON EXPLICACIONES ---
         const testDB = {
+            'iaw_1': {
+                title: 'Implantación de Aplicaciones Web - Test 1',
+                questions: [
+                    { q: '¿Qué significa HTML?', options: ['Hyper Text Markup Language', 'Hyper Transfer Markup Language', 'High Text Markup Language', 'Hyper Text Makeup Language'], answer: 0, exp: 'HTML es el lenguaje de marcado estándar para la creación de páginas web.' },
+                    { q: '¿Qué etiqueta se usa para crear un enlace en HTML?', options: ['<link>', '<a>', '<href>', '<url>'], answer: 1, exp: 'La etiqueta <a> (anchor) se utiliza para crear hipervínculos hacia otras páginas o recursos.' },
+                    { q: '¿Cuál es la etiqueta correcta para insertar una imagen?', options: ['<img>', '<image>', '<pic>', '<src>'], answer: 0, exp: '<img> es la etiqueta correcta, la cual necesita obligatoriamente el atributo src para indicar la ruta.' },
+                    { q: '¿Qué etiqueta define el título de una página en la pestaña del navegador?', options: ['<header>', '<title>', '<head>', '<h1>'], answer: 1, exp: 'El <title> se coloca dentro del <head> y define el texto que aparece en la pestaña del navegador.' },
+                    { q: '¿Cuál es la etiqueta para crear una lista ordenada?', options: ['<ul>', '<li>', '<ol>', '<list>'], answer: 2, exp: '<ol> significa Ordered List (generará números 1, 2, 3...), mientras que <ul> es Unordered List (viñetas).' },
+                    { q: '¿Qué atributo se usa para abrir un enlace en una nueva pestaña?', options: ['target="_blank"', 'href="_new"', 'rel="external"', 'open="new"'], answer: 0, exp: 'El atributo target="_blank" indica al navegador que abra el documento enlazado en una pestaña nueva.' },
+                    { q: '¿Qué etiqueta se usa para el encabezado principal de una página?', options: ['<head>', '<header>', '<h1>', '<heading>'], answer: 2, exp: '<h1> es el Header 1, el título principal y más importante de la jerarquía de la página a nivel SEO.' },
+                    { q: '¿Qué etiqueta contiene los metadatos y la información de la página?', options: ['<body>', '<footer>', '<meta>', '<head>'], answer: 3, exp: 'El <head> contiene toda la información de configuración (metadatos, scripts, estilos) que no es directamente visible en el documento.' },
+                    { q: '¿Cómo se comenta en HTML?', options: ['// comentario', '# comentario', '<!-- comentario -->', '/* comentario */'], answer: 2, exp: 'Los comentarios en HTML se encierran entre <!-- y -->. El resto son de JS, PHP o CSS.' },
+                    { q: '¿Qué etiqueta se usa para insertar un salto de línea?', options: ['<br>', '<hr>', '<p>', '<line>'], answer: 0, exp: '<br> (line break) inserta un retorno de carro sin crear un nuevo párrafo.' },
+                    { q: '¿Qué significa CSS?', options: ['Computer Style Sheets', 'Creative Style Sheets', 'Cascading Style Sheets', 'Colorful Style Sheets'], answer: 2, exp: 'Hojas de Estilo en Cascada. Define cómo se van a mostrar los elementos HTML en pantalla.' },
+                    { q: '¿Cómo se selecciona un elemento por su id en CSS?', options: ['.miId', '#miId', '*miId', 'miId'], answer: 1, exp: 'En CSS, el selector de ID utiliza la almohadilla (#). El punto (.) es para clases.' },
+                    { q: '¿Cómo se selecciona un elemento por su clase en CSS?', options: ['#miClase', '.miClase', '*miClase', 'class(miClase)'], answer: 1, exp: 'El punto (.) antecede al nombre de la clase para aplicar estilos a múltiples elementos con esa clase.' },
+                    { q: '¿Qué propiedad cambia el color del texto?', options: ['background-color', 'text-color', 'font-color', 'color'], answer: 3, exp: 'La propiedad "color" a secas modifica el color de la fuente/texto.' },
+                    { q: '¿Qué propiedad cambia el color de fondo?', options: ['background-color', 'bg-color', 'color-background', 'background'], answer: 0, exp: 'background-color (o el atajo "background") define el color trasero del elemento.' },
+                    { q: '¿Cómo se hace un texto en negrita con CSS?', options: ['font-weight: bold;', 'text-style: bold;', 'font: bold;', 'weight: bold;'], answer: 0, exp: 'La propiedad font-weight define el grosor de la fuente. Bold equivale al valor numérico 700.' },
+                    { q: '¿Qué propiedad controla el margen exterior de un elemento?', options: ['padding', 'border', 'margin', 'spacing'], answer: 2, exp: 'margin crea espacio ALREDEDOR (fuera) del borde del elemento, separándolo de otros.' },
+                    { q: '¿Qué propiedad controla el espacio interior de un elemento?', options: ['margin', 'padding', 'inner-space', 'gap'], answer: 1, exp: 'padding crea espacio DENTRO del elemento, entre su contenido y su propio borde.' },
+                    { q: '¿Qué unidad de medida es relativa al tamaño de la fuente del elemento padre?', options: ['px', 'pt', 'em', 'cm'], answer: 2, exp: 'La unidad "em" es relativa. Si el padre tiene font-size de 16px, 2em en el hijo serán 32px.' },
+                    { q: '¿Cómo se aplica CSS directamente a una etiqueta HTML?', options: ['Con el atributo class', 'Con el atributo style', 'Con la etiqueta <css>', 'Con el atributo css'], answer: 1, exp: 'Se usa el atributo inline "style" (ej. <p style="color: red;">). Aunque es mala práctica si se abusa.' },
+                    { q: '¿Cómo se escribe un mensaje en la consola de JavaScript?', options: ['console.log("Hola");', 'print("Hola");', 'system.out("Hola");', 'echo("Hola");'], answer: 0, exp: 'console.log() es la instrucción estándar de JS para escupir mensajes en la consola del desarrollador (F12).' },
+                    { q: '¿Cuál es la forma correcta de declarar una variable en JavaScript?', options: ['var nombre;', 'v nombre;', 'variable nombre;', 'let nombre;'], answer: 3, exp: 'Modernamente se usa "let" para variables que cambian y "const" para constantes. "var" es legacy y tiene problemas de scope.' },
+                    { q: '¿Qué operador se usa para comparar valor y tipo en JavaScript?', options: ['==', '=', '===', '!='], answer: 2, exp: '=== es la igualdad estricta. Comprueba que no solo el valor sea igual, sino también el tipo de dato (ej. 5 === "5" es false).' },
+                    { q: '¿Cómo se escribe una función en JavaScript?', options: ['function miFuncion() {}', 'def miFuncion() {}', 'func miFuncion() {}', 'function:miFuncion() {}'], answer: 0, exp: 'Se utiliza la palabra reservada "function" seguida del nombre, paréntesis para los parámetros y llaves para el cuerpo.' },
+                    { q: '¿Qué método se usa para seleccionar un elemento por su id?', options: ['document.querySelector(".id")', 'document.getElementById("id")', 'document.getElementByClass("id")', 'document.selectId("id")'], answer: 1, exp: 'getElementById es el método clásico y más rápido del DOM para recuperar el nodo único de un ID.' },
+                    { q: '¿Cómo se declara un arreglo (array) en JavaScript?', options: ['{}', '()', '[]', '||'], answer: 2, exp: 'Los corchetes [] denotan un array literal. Las llaves {} son para objetos.' },
+                    { q: '¿Qué estructura se usa para ejecutar código si una condición es verdadera?', options: ['for', 'while', 'if', 'switch'], answer: 2, exp: 'La sentencia condicional básica es "if (condición) { ... }".' },
+                    { q: '¿Qué valor representa "no es un número" en JavaScript?', options: ['null', 'undefined', 'NaN', 'false'], answer: 2, exp: 'NaN (Not a Number) es el resultado de realizar una operación matemática inválida (ej. "hola" / 2).' },
+                    { q: '¿Qué bucle se ejecuta al menos una vez siempre?', options: ['for', 'while', 'do-while', 'forEach'], answer: 2, exp: 'El bucle do-while primero ejecuta el bloque de código y LUEGO comprueba la condición.' },
+                    { q: '¿Cómo se agrega un evento de clic a un elemento?', options: ['elemento.onclick = funcion;', 'elemento.addEvent("click");', 'elemento.click(funcion);', 'elemento.addEventListener("click", funcion);'], answer: 3, exp: 'addEventListener es la forma moderna y recomendada porque permite asociar múltiples funciones al mismo evento sin sobrescribirlas.' }
+                ]
+            },
+            'iaw_2': {
+                title: 'Implantación de Aplicaciones Web - Test 2',
+                questions: [
+                    { q: '¿Qué estructura en PHP ejecuta código si una condición es verdadera?', options: ['if', 'else', 'elseif', 'switch'], answer: 0, exp: 'La estructura if comprueba una expresión booleana y ejecuta el bloque si se evalúa como true.' },
+                    { q: '¿Qué estructura ejecuta código cuando la condición del if es falsa?', options: ['elseif', 'else', 'then', 'continue'], answer: 1, exp: 'El bloque else captura todas las situaciones en las que la condición del if principal (o los elseif previos) no se cumplió.' },
+                    { q: '¿Qué bucle repite mientras la condición sea verdadera, comprobando al inicio?', options: ['do-while', 'foreach', 'while', 'for'], answer: 2, exp: 'El bucle while evalúa la condición ANTES de entrar al bloque, por lo que podría no ejecutarse nunca si la condición de partida es falsa.' },
+                    { q: '¿Qué bucle se ejecuta al menos una vez antes de comprobar la condición?', options: ['while', 'for', 'do-while', 'foreach'], answer: 2, exp: 'El do-while entra directamente a ejecutar el código y, al final del ciclo, evalúa si debe repetir.' },
+                    { q: '¿Qué bucle es el más adecuado para recorrer un arreglo en PHP?', options: ['while', 'for', 'do-while', 'foreach'], answer: 3, exp: 'foreach fue diseñado específicamente para iterar sobre arrays u objetos fácilmente (foreach ($array as $valor)).' },
+                    { q: '¿Qué estructura permite evaluar una variable contra múltiples valores?', options: ['if-else', 'switch', 'while', 'foreach'], answer: 1, exp: 'switch toma una variable y la compara con diferentes "case", siendo más limpio que anidar veinte if-elseif.' },
+                    { q: '¿Qué operador lógico representa "Y" (AND) en PHP?', options: ['OR', '&&', '!', '||'], answer: 1, exp: '&& (o AND) devuelve true únicamente si tanto la expresión izquierda como la derecha son verdaderas.' },
+                    { q: '¿Qué operador lógico representa "O" (OR) en PHP?', options: ['&&', 'AND', '||', 'NOT'], answer: 2, exp: '|| (o OR) devuelve true si al menos una de las dos condiciones es verdadera.' },
+                    { q: '¿Qué método de formulario envía los datos visibles en la URL?', options: ['POST', 'PUT', 'DELETE', 'GET'], answer: 3, exp: 'El método GET pasa los parámetros anexados a la URL visible (?nombre=pepe&edad=20). No debe usarse para contraseñas.' },
+                    { q: '¿Qué método de formulario envía los datos ocultos en el cuerpo de la petición?', options: ['GET', 'REQUEST', 'POST', 'SESSION'], answer: 2, exp: 'El método POST no expone los datos en la URL, los envía encapsulados en la petición HTTP. Útil para logins o datos extensos.' },
+                    { q: '¿Qué superglobal recibe datos de un formulario con method="get"?', options: ['$_POST', '$_REQUEST', '$_SERVER', '$_GET'], answer: 3, exp: '$_GET es un array asociativo que contiene las variables pasadas al script actual mediante parámetros de URL.' },
+                    { q: '¿Qué superglobal recibe datos de un formulario con method="post"?', options: ['$_GET', '$_FILES', '$_POST', '$_SESSION'], answer: 2, exp: '$_POST recopila los datos enviados desde un formulario HTML mediante el método HTTP POST.' },
+                    { q: '¿Qué superglobal combina datos de GET, POST y COOKIE?', options: ['$_GLOBALS', '$_REQUEST', '$_INPUT', '$_DATA'], answer: 1, exp: '$_REQUEST es un popurrí que incluye el contenido de $_GET, $_POST y $_COOKIE. A nivel de seguridad, es mejor usar $_POST o $_GET directamente.' },
+                    { q: '¿Qué superglobal contiene información de archivos subidos?', options: ['$_POST', '$_GET', '$_FILES', '$_UPLOAD'], answer: 2, exp: '$_FILES es un array 2D que contiene los atributos de un archivo subido vía POST (nombre, tipo, error, tamaño, ruta temporal).' },
+                    { q: '¿Qué atributo debe tener un formulario para permitir subir archivos?', options: ['enctype="text/plain"', 'enctype="multipart/form-data"', 'method="get"', 'enctype="urlencoded"'], answer: 1, exp: 'Sin enctype="multipart/form-data", el archivo no se enviará, solo se mandará su nombre como una cadena de texto normal.' },
+                    { q: '¿Qué función se usa para abrir un archivo en PHP?', options: ['readfile()', 'file_open()', 'fopen()', 'open()'], answer: 2, exp: 'fopen() asocia un recurso con nombre (archivo o URL) a un flujo que luego podemos leer o escribir.' },
+                    { q: '¿Qué función se usa para leer el contenido completo de un archivo?', options: ['fgets()', 'fread()', 'file_get_contents()', 'fgetc()'], answer: 2, exp: 'file_get_contents() es la forma más rápida de volcar todo un archivo a un string sin lidiar con manejadores de archivos.' },
+                    { q: '¿Qué función se usa para escribir en un archivo?', options: ['fwrite()', 'file_write()', 'fputs()', 'ambas 1 y 3'], answer: 3, exp: 'Tanto fwrite() como su alias fputs() se utilizan para escribir una cadena dentro de un archivo abierto.' },
+                    { q: '¿Qué función se usa para cerrar un archivo abierto con fopen()?', options: ['fclose()', 'close()', 'file_close()', 'fend()'], answer: 0, exp: 'fclose() libera el recurso del manejador de archivo. Es buena práctica cerrarlos para no saturar la memoria del server.' },
+                    { q: '¿Qué función inicia una sesión en PHP?', options: ['session_open()', 'start_session()', 'session_begin()', 'session_start()'], answer: 3, exp: 'session_start() debe ser llamada al principio del script (antes de enviar ningún output al navegador) para arrancar o reanudar la sesión.' },
+                    { q: '¿Qué superglobal almacena variables de sesión?', options: ['$_COOKIE', '$_SESSION', '$_SERVER', '$_GLOBALS'], answer: 1, exp: '$_SESSION es un array asociativo que persiste entre diferentes páginas mientras dure la visita del usuario.' },
+                    { q: '¿Qué función destruye por completo una sesión?', options: ['session_unset()', 'session_destroy()', 'session_end()', 'session_clear()'], answer: 1, exp: 'session_destroy() elimina toda la data asociada con la sesión en el servidor, destruyendo el ID de sesión (muy usado al hacer logout).' },
+                    { q: '¿Qué función solo elimina las variables de sesión?', options: ['session_destroy()', 'session_unset()', 'session_reset()', 'session_clean()'], answer: 1, exp: 'session_unset() vacía el array $_SESSION en el entorno actual, pero la sesión en sí sigue viva en el motor de PHP.' },
+                    { q: '¿Qué función conecta a MySQL usando MySQLi?', options: ['mysql_connect()', 'db_connect()', 'mysqli_connect()', 'mysqli_open()'], answer: 2, exp: 'mysqli_connect() establece una nueva conexión con el servidor MySQL. (La antigua mysql_connect fue deprecada y eliminada).' },
+                    { q: '¿Qué función ejecuta una consulta SQL en MySQLi?', options: ['mysqli_run()', 'mysqli_execute()', 'mysqli_sql()', 'mysqli_query()'], answer: 3, exp: 'mysqli_query() toma el enlace de la BD y la cadena SQL, ejecutándola contra la base de datos.' },
+                    { q: '¿Qué función obtiene el número de filas de un resultado SELECT?', options: ['mysqli_count()', 'mysqli_num_rows()', 'mysqli_rows()', 'mysqli_row_count()'], answer: 1, exp: 'mysqli_num_rows() te dice cuántos registros ha devuelto tu SELECT. Útil para ver si un usuario existe o no.' },
+                    { q: '¿Qué función obtiene una fila como arreglo asociativo?', options: ['mysqli_fetch_row()', 'mysqli_fetch_object()', 'mysqli_fetch_assoc()', 'mysqli_fetch_array()'], answer: 2, exp: 'mysqli_fetch_assoc() devuelve una fila donde las claves del array son los nombres exactos de las columnas en la BD.' },
+                    { q: '¿Qué función devuelve el último ID insertado con AUTO_INCREMENT?', options: ['mysqli_insert_id()', 'mysqli_last_id()', 'mysqli_id()', 'mysqli_auto_id()'], answer: 0, exp: 'mysqli_insert_id() es vital cuando insertas en una tabla relacionada y necesitas saber el ID autogenerado del padre para el hijo.' },
+                    { q: '¿Qué función cierra la conexión MySQLi?', options: ['mysqli_disconnect()', 'mysqli_end()', 'close_db()', 'mysqli_close()'], answer: 3, exp: 'mysqli_close() cierra la conexión con el servidor de bases de datos.' },
+                    { q: '¿Qué función ayuda a prevenir SQL injection escapando caracteres especiales?', options: ['addslashes()', 'htmlspecialchars()', 'mysqli_real_escape_string()', 'filter_var()'], answer: 2, exp: 'mysqli_real_escape_string() escapa comillas y caracteres peligrosos para que la base de datos los trate como texto plano y no como código inyectable. Aún mejor: usar sentencias preparadas.' }
+                ]
+            },
             'dasp_1': {
                 title: 'Digitalización - Test 1',
                 questions: [
@@ -448,74 +541,74 @@
                     { q: '¿Qué es NTP?', options: ['Sincroniza hora', 'Firewall', 'Base datos', 'Protocolo web'], answer: 0, exp: 'Network Time Protocol (NTP) se utiliza para sincronizar los relojes de los sistemas a través de la red (vital para Kerberos, logs, etc.).' }
                 ]
             },
-            'asgbd_1': {
-                title: 'Administración de SGBD - Test 1',
+            'ing_1': {
+                title: 'Inglés Profesional - Test 1',
                 questions: [
-                    { q: '¿Qué característica define a un SGBD?', options: ['Es un sistema operativo', 'Permite ejecutar programas', 'Gestiona y organiza datos', 'Solo almacena archivos'], answer: 2, exp: 'Un Sistema Gestor de Bases de Datos (SGBD) es el software principal que interactúa con los usuarios, aplicaciones y la propia base de datos para capturar y analizar los datos.' },
-                    { q: '¿Cuál de los siguientes es un SGBD de código abierto?', options: ['SQL Server', 'DB2', 'Oracle', 'PostgreSQL'], answer: 3, exp: 'PostgreSQL es un SGBD relacional orientado a objetos y de código abierto. Los otros tres son de pago/propietarios.' },
-                    { q: '¿Qué elemento pertenece a la arquitectura lógica?', options: ['Discos', 'Memoria RAM', 'Datafiles', 'Tablespaces'], answer: 3, exp: 'Los tablespaces (espacios de tablas) son contenedores lógicos que agrupan estructuras lógicas relacionadas.' },
-                    { q: '¿Qué describe la arquitectura física de un SGBD?', options: ['Cómo se crean usuarios', 'Cómo se programan consultas', 'Cómo ven los usuarios los datos', 'Cómo se almacenan los datos en disco'], answer: 3, exp: 'La arquitectura física se refiere a los ficheros reales a nivel de sistema operativo donde residen los datos (datafiles, redo logs, etc.).' },
-                    { q: '¿Qué contienen los datafiles?', options: ['Consultas', 'Usuarios', 'Datos reales', 'Metadatos'], answer: 2, exp: 'Los datafiles son los archivos físicos en disco que contienen los datos reales (filas y columnas) de las tablas.' },
-                    { q: '¿Cuál es la función del diccionario de datos?', options: ['Guardar metadatos', 'Controlar usuarios', 'Almacenar registros', 'Ejecutar consultas'], answer: 0, exp: 'El diccionario de datos es un conjunto de tablas de solo lectura que proporciona información sobre la base de datos (metadatos).' },
-                    { q: '¿Qué es un rol en bases de datos?', options: ['Un índice', 'Una tabla', 'Un conjunto de permisos', 'Un usuario'], answer: 2, exp: 'Un rol agrupa privilegios para facilitar la administración. Se asigna el rol a los usuarios en lugar de dar permisos uno por uno.' },
-                    { q: '¿Qué principio limita los permisos al mínimo necesario?', options: ['Mínimo privilegio', 'Control total', 'Acceso abierto', 'Permiso dinámico'], answer: 0, exp: 'Principio fundamental de seguridad: otorgar solo los permisos estrictamente necesarios para que un usuario realice su trabajo.' },
-                    { q: '¿Qué comando concede permisos?', options: ['GRANT', 'INSERT', 'CREATE', 'SELECT'], answer: 0, exp: 'GRANT se utiliza para dar privilegios de sistema o de objeto a usuarios y roles.' },
-                    { q: '¿Qué comando revoca permisos?', options: ['DROP', 'REVOKE', 'DELETE', 'REMOVE'], answer: 1, exp: 'REVOKE retira los privilegios previamente concedidos con GRANT.' },
-                    { q: '¿Qué es una vista en SQL?', options: ['Consulta almacenada', 'Índice', 'Trigger', 'Tabla física'], answer: 0, exp: 'Una vista es una tabla virtual basada en el conjunto de resultados de una consulta SQL predefinida.' },
-                    { q: '¿Qué caracteriza una vista simple?', options: ['Usa múltiples tablas', 'Se basa en una sola tabla', 'Usa triggers', 'Es materializada'], answer: 1, exp: 'Derivan de una única tabla base y generalmente permiten realizar operaciones DML (INSERT, UPDATE, DELETE) a través de ellas.' },
-                    { q: '¿Qué caracteriza una vista compleja?', options: ['Usa varias tablas', 'No usa JOIN', 'Es física', 'Es temporal'], answer: 0, exp: 'Se forman haciendo JOINs entre múltiples tablas, agrupaciones o funciones. Suelen ser de solo lectura.' },
-                    { q: '¿Qué ventaja principal tienen las vistas?', options: ['Reducen usuarios', 'Aumentan hardware', 'Mejoran seguridad y abstracción', 'Eliminan datos'], answer: 2, exp: 'Ocultan la complejidad subyacente de las tablas y restringen el acceso a columnas/filas específicas, mejorando la seguridad.' },
-                    { q: '¿Qué hace WITH CHECK OPTION?', options: ['Ordena resultados', 'Valida condiciones de la vista', 'Agrupa datos', 'Elimina filas'], answer: 1, exp: 'Evita que a través de la vista se inserten o modifiquen filas que no cumplirían la cláusula WHERE de la propia vista.' },
-                    { q: '¿Qué es PL/SQL?', options: ['Un sistema operativo', 'Un índice', 'Un SGBD', 'Un lenguaje procedural'], answer: 3, exp: 'Procedural Language/SQL es la extensión propietaria de Oracle que añade estructuras de programación (bucles, condicionales) a SQL.' },
-                    { q: '¿Qué sección es obligatoria en un bloque PL/SQL?', options: ['EXCEPTION', 'DECLARE', 'VARIABLES', 'BEGIN'], answer: 3, exp: 'Todo bloque PL/SQL debe tener al menos la sección ejecutable delimitada por BEGIN y END.' },
-                    { q: '¿Qué devuelve una función en PL/SQL?', options: ['Un valor', 'Una tabla', 'Un cursor', 'Nada'], answer: 0, exp: 'Por definición, una función siempre debe retornar un valor (usando la cláusula RETURN).' },
-                    { q: '¿Qué hace un procedimiento?', options: ['Crea índices', 'Consulta datos', 'Ejecuta acciones', 'Devuelve valor'], answer: 2, exp: 'Un procedimiento realiza una acción específica pero no devuelve un valor directamente en su llamada (aunque puede usar parámetros OUT).' },
-                    { q: '¿Para qué sirven los cursores?', options: ['Eliminar datos', 'Indexar datos', 'Crear tablas', 'Recorrer resultados'], answer: 3, exp: 'Los cursores permiten procesar fila por fila el conjunto de resultados devuelto por una consulta SELECT múltiple.' },
-                    { q: '¿Qué permite la sección EXCEPTION?', options: ['Gestionar errores', 'Declarar variables', 'Finalizar ejecución', 'Iniciar programa'], answer: 0, exp: 'Captura y maneja los errores (excepciones) en tiempo de ejecución para evitar que el programa aborte bruscamente.' },
-                    { q: '¿Qué es un trigger?', options: ['Vista', 'Tabla', 'Índice', 'Procedimiento automático'], answer: 3, exp: 'Un disparador es un bloque PL/SQL que se ejecuta automáticamente cuando ocurre un evento DML (INSERT/UPDATE/DELETE) o DDL.' },
-                    { q: '¿Cuándo se ejecuta un trigger BEFORE?', options: ['Después de la operación', 'Solo si hay error', 'Antes de modificar los datos', 'Manual'], answer: 2, exp: 'Se dispara justo ANTES de que el SGBD intente aplicar la operación a la tabla. Útil para validaciones previas.' },
-                    { q: '¿Qué operación no dispara triggers?', options: ['SELECT', 'DELETE', 'UPDATE', 'INSERT'], answer: 0, exp: 'SELECT solo lee datos, no modifica el estado de la base de datos, por lo que no dispara triggers DML estándar.' },
-                    { q: '¿Qué contiene :OLD en un trigger?', options: ['Valores nuevos', 'Metadatos', 'Valores anteriores', 'Errores'], answer: 2, exp: 'Referencia los valores que tenía la fila ANTES de que se ejecutara el UPDATE o DELETE.' },
-                    { q: '¿Qué contiene :NEW?', options: ['Valores anteriores', 'Valores nuevos', 'Usuarios', 'Consultas'], answer: 1, exp: 'Referencia los nuevos valores que se van a insertar o actualizar (disponible en INSERT y UPDATE).' },
-                    { q: '¿Cuál es un uso típico de triggers?', options: ['Ejecutar SELECT', 'Auditoría de cambios', 'Crear roles', 'Crear tablas'], answer: 1, exp: 'Se usan frecuentemente para registrar quién y cuándo modificó una tabla (tablas de auditoría/histórico).' },
-                    { q: '¿Qué ventaja tiene PL/SQL frente a SQL puro?', options: ['No usa variables', 'Permite lógica compleja', 'Menor rendimiento', 'Solo lectura'], answer: 1, exp: 'SQL es declarativo. PL/SQL añade control de flujo (IF, FOR, WHILE), variables y manejo de excepciones.' },
-                    { q: '¿Qué es un paquete en PL/SQL?', options: ['Una tabla', 'Un conjunto de procedimientos', 'Un índice', 'Un usuario'], answer: 1, exp: 'Un package agrupa lógicamente tipos, variables, cursores, procedimientos y funciones relacionadas bajo un mismo nombre.' },
-                    { q: '¿Qué ventaja tienen los paquetes?', options: ['Menor seguridad', 'Modularidad y reutilización', 'Evitan SQL', 'Eliminan datos'], answer: 1, exp: 'Mejoran el rendimiento (se cargan enteros en memoria), encapsulan el código y organizan mejor la lógica de negocio.' }
+                    { q: 'He works ………… the IT department of a large company.', options: ['at', 'in', 'on', 'for'], answer: 1, exp: 'Para hablar de departamentos dentro de una empresa u organización, se utiliza la preposición "in".' },
+                    { q: 'A polite ending for a formal letter or email is ‘Yours …………’.', options: ['happily', 'faithfully', 'kindly', 'honestly'], answer: 1, exp: 'Si empiezas con "Dear Sir/Madam" (no sabes el nombre del receptor), la despedida formal correcta en inglés británico es "Yours faithfully".' },
+                    { q: 'Many students find ………… jobs during the holidays.', options: ['regular', 'permanent', 'temporary', 'fixed'], answer: 2, exp: 'Los trabajos para periodos cortos como las vacaciones son empleos temporales ("temporary jobs").' },
+                    { q: 'They live far from the city, so they ………… to work every day.', options: ['shift', 'clock', 'commute', 'telecommute'], answer: 2, exp: '"Commute" es el verbo específico que define el trayecto regular de ida y vuelta entre casa y el trabajo.' },
+                    { q: 'A ………… employee is very enthusiastic and wants to succeed.', options: ['methodical', 'numerate', 'motivated', 'flexible'], answer: 2, exp: 'Alguien entusiasta y con afán de superación se define como un empleado motivado ("motivated").' },
+                    { q: 'I graduated ………… Oxford University ………… a degree ………… engineering.', options: ['in / with / of', 'at / on / of', 'on / in / with', 'from / with / in'], answer: 3, exp: 'Las preposiciones correctas son: graduate "from" (universidad), "with a degree" (con un título), "in" (en la especialidad).' },
+                    { q: 'A polite way to start a letter when you don’t know the name is ‘Dear …………’.', options: ['Mr or Mrs', 'All', 'Sir or Madam', 'Friend'], answer: 2, exp: 'La fórmula formal estándar cuando se desconoce a la persona específica es "Dear Sir or Madam".' },
+                    { q: 'I have a ………… job, so I work from 9 to 5 every day.', options: ['part-time', 'temporary', 'full-time', 'shift'], answer: 2, exp: 'Una jornada laboral completa (típicamente 40 horas, de 9 a 5) es "full-time".' },
+                    { q: 'Chris works only 15 hours per week. He has a ………… job.', options: ['temporary', 'half-time', 'part-time', 'full-time'], answer: 2, exp: 'Trabajar un número reducido de horas a la semana se denomina empleo a tiempo parcial ("part-time").' },
+                    { q: 'Computer programming is an example of ………… skill.', options: ['digital', 'hard', 'difficult', 'soft'], answer: 1, exp: 'Las competencias técnicas concretas y cuantificables (programación, idiomas, herramientas) son "hard skills".' },
+                    { q: 'I’m ………… the budget for new car models.', options: ['responsible of', 'responsible at', 'responsibility for', 'responsible for'], answer: 3, exp: 'La colocación preposicional en inglés es siempre "responsible for" (ser responsable de algo).' },
+                    { q: 'Employers look for candidates who are ………… and can work independently.', options: ['self-starters', 'commuters', 'managers', 'team players'], answer: 0, exp: 'Un "self-starter" es una persona proactiva y con iniciativa que no necesita que le estén diciendo qué hacer todo el tiempo.' },
+                    { q: 'You usually end a cover letter with ‘I look forward to ………… from you’.', options: ['hear', 'hears', 'hearing', 'heard'], answer: 2, exp: 'Regla de oro: la expresión "look forward to" SIEMPRE va seguida de un verbo en gerundio (-ing).' },
+                    { q: 'I work ………… a multinational company in the tech sector.', options: ['with', 'for', 'at', 'in'], answer: 1, exp: 'Cuando te refieres a la entidad o empresa que te ha contratado, la preposición más habitual es "work for".' },
+                    { q: 'A CV usually includes your education, skills, and ………….', options: ['salary', 'work experience', 'address', 'hobbies'], answer: 1, exp: 'Lo fundamental de un currículum es la formación, las habilidades y la experiencia laboral ("work experience").' },
+                    { q: 'Good communication is an example of ………… skill.', options: ['financial', 'technical', 'legal', 'soft'], answer: 3, exp: 'Las habilidades interpersonales, sociales o de actitud (comunicación, empatía, liderazgo) son "soft skills".' },
+                    { q: 'I leave ………… work at 7.30 every morning.', options: ['for', 'to', 'in', 'from'], answer: 0, exp: '"Leave for [lugar]" significa salir de donde estás con destino a ese lugar.' },
+                    { q: 'Factory workers often work in …………: day, night…', options: ['clocks', 'rounds', 'shifts', 'routines'], answer: 2, exp: '"Shift" significa turno de trabajo (turno de día, de noche, rotativo, etc.).' },
+                    { q: 'She is very skilled ………… using Excel and data analysis.', options: ['with', 'to', 'on', 'at / in'], answer: 3, exp: 'Para hablar de destreza en algo concreto, se utiliza "skilled at" o "skilled in" indistintamente.' },
+                    { q: 'Many people are ………… work due to the economic crisis.', options: ['out of', 'off', 'in', 'on'], answer: 0, exp: '"Out of work" es un sinónimo directo de estar desempleado o en paro.' },
+                    { q: 'My manager is ………… work today because she is ill.', options: ['out of', 'off', 'in', 'on'], answer: 1, exp: '"Off work" indica una ausencia temporal del trabajo, normalmente por enfermedad o vacaciones.' },
+                    { q: 'Harry is very good ………… communicating with customers.', options: ['with', 'in', 'on', 'at'], answer: 3, exp: 'La expresión correcta para indicar habilidad es "good at" (siempre seguido de sustantivo o verbo en -ing).' },
+                    { q: 'Employees can ………… in at any time between 8 and 10.', options: ['shift', 'sign', 'log', 'clock'], answer: 3, exp: 'El phrasal verb "clock in" o "clock on" significa fichar al entrar a la jornada laboral.' },
+                    { q: 'My colleague is very good ………… numbers and financial data.', options: ['at', 'in', 'with', 'on'], answer: 2, exp: 'Se usa "good with" para indicar que se te da bien lidiar o manejar algo (ej. good with numbers, good with people).' },
+                    { q: 'We need someone who is a real …………; the job requires constant collaboration.', options: ['team player', 'hard worker', 'lone worker', 'social player'], answer: 0, exp: 'Alguien que sabe colaborar, escuchar y trabajar bien dentro de un grupo es un "team player".' },
+                    { q: 'Fringe ………… include things like gym memberships or free meals.', options: ['wages', 'salaries', 'benefits', 'responsibilities'], answer: 2, exp: '"Fringe benefits" son todos los beneficios o compensaciones en especie que se añaden al salario base.' },
+                    { q: 'Kerstin is ………… of the design department at a European car company.', options: ['in charge', 'confident', 'responsible', 'the manager for'], answer: 0, exp: '"In charge of" significa estar al mando o a cargo de un departamento o proyecto.' },
+                    { q: 'A ………… person works in a very organized and systematic way.', options: ['motivated', 'methodical', 'talented', 'numerate'], answer: 1, exp: 'El adjetivo "methodical" describe a una persona sistemática que sigue procedimientos de forma ordenada.' },
+                    { q: 'My total ………… includes my salary and bonuses.', options: ['income', 'overtime', 'benefit', 'wage'], answer: 0, exp: '"Income" (ingresos) engloba todo el dinero recibido, sumando el salario base y cualquier extra.' },
+                    { q: 'If you work more hours than usual, you do ………….', options: ['overtime', 'flexitime', 'part-time', 'commission'], answer: 0, exp: 'Trabajar horas extra fuera del horario de tu contrato se denomina "overtime".' }
                 ]
             },
-            'asgbd_2': {
-                title: 'Administración de SGBD - Test 2',
+            'ing_2': {
+                title: 'Inglés Profesional - Test 2',
                 questions: [
-                    { q: 'En PostgreSQL, si deseas conocer tiempos reales y filas procesadas, ¿qué comando usarías?', options: ['EXPLAIN', 'TRACE PLAN', 'EXPLAIN ANALYZE', 'SHOW PLAN'], answer: 2, exp: 'EXPLAIN muestra la estimación. EXPLAIN ANALYZE ejecuta realmente la consulta y muestra los tiempos y filas reales procesadas.' },
-                    { q: '¿Qué situación puede provocar que el optimizador elija un mal plan?', options: ['Muchos usuarios', 'Estadísticas desactualizadas', 'Uso de SELECT', 'Uso de índices'], answer: 1, exp: 'El optimizador se basa en estadísticas. Si están obsoletas, calculará mal el coste de la ruta y tomará malas decisiones.' },
-                    { q: '¿Qué ventaja principal ofrece el particionamiento por fecha?', options: ['Reduce usuarios', 'Lee solo rangos necesarios', 'Evita backups', 'Elimina índices'], answer: 1, exp: 'Partition pruning. Si consultas un mes concreto, el motor ignora las particiones de los demás meses, ahorrando mucho I/O.' },
-                    { q: 'Si una tabla recibe muchas escrituras, ¿qué exceso conviene evitar?', options: ['Usuarios', 'Logs', 'Triggers válidos', 'Índices innecesarios'], answer: 3, exp: 'Cada vez que haces INSERT/UPDATE/DELETE, el SGBD tiene que actualizar todos los índices de la tabla. Muchos índices ralentizan las escrituras.' },
-                    { q: '¿Qué indica normalmente un TABLE SCAN costoso en tabla grande?', options: ['Uso correcto de PK', 'Lectura completa potencialmente cara', 'Error sintáctico', 'Bloqueo seguro'], answer: 1, exp: 'Full Table Scan significa leer disco bloque a bloque. En tablas masivas suele ser el cuello de botella si se busca un registro concreto.' },
-                    { q: '¿Qué herramienta Oracle compara periodos normal vs lento?', options: ['AWR', 'tar', 'cron', 'grep'], answer: 0, exp: 'Automatic Workload Repository (AWR) genera informes de rendimiento muy detallados comparando dos "snapshots" en el tiempo.' },
-                    { q: '¿Qué extensión PostgreSQL ayuda a detectar SQL dominante históricamente?', options: ['pg_stat_statements', 'pg_backup', 'autovacuum', 'journalctl'], answer: 0, exp: 'pg_stat_statements rastrea estadísticas de ejecución de todas las sentencias SQL, clave para encontrar cuellos de botella.' },
-                    { q: 'Si EXPLAIN estima pocas filas pero ANALYZE muestra muchas, existe problema de:', options: ['ACL', 'Cardinalidad', 'Red', 'Backup'], answer: 1, exp: 'Un error de cardinalidad ocurre cuando el planificador calcula mal el volumen de datos que devolverá un nodo del plan.' },
-                    { q: '¿Qué conviene revisar primero en un informe AWR?', options: ['Color del reporte', 'Top Timed Events', 'Usuarios creados', 'Triggers'], answer: 1, exp: 'La sección "Top 10 Foreground Events by Total Wait Time" te dice exactamente en qué se está atascando la base de datos (CPU, I/O, bloqueos...).' },
-                    { q: '¿Qué opción describe mejor INDEX SCAN selectivo?', options: ['Acceso filtrado eficiente', 'Borrado físico', 'Bloqueo completo', 'Backup incremental'], answer: 0, exp: 'Acceder a una tabla a través de un índice escaneando solo las ramas necesarias. Es lo ideal para consultas que devuelven pocos registros.' },
-                    { q: '¿Qué ventaja aporta dividir scripts en funciones?', options: ['Más dependencia', 'Mayor mantenibilidad', 'Más errores', 'Menos reutilización'], answer: 1, exp: 'Las funciones permiten no repetir código (DRY), probar partes por separado y hacer el script mucho más legible.' },
-                    { q: '¿Qué herramienta detecta malas prácticas en Bash antes de producción?', options: ['ShellCheck', 'Nagios', 'AWR', 'EXPLAIN'], answer: 0, exp: 'ShellCheck es un linter estático espectacular que te avisa de variables no encomilladas y errores típicos de scripting en Bash.' },
-                    { q: '¿Qué herramienta cumple función similar en PowerShell?', options: ['tar', 'PSScriptAnalyzer', 'cron', 'scp'], answer: 1, exp: 'PSScriptAnalyzer comprueba la calidad y las convenciones del código PowerShell.' },
-                    { q: '¿Qué práctica es más segura en scripts?', options: ['Guardar claves en texto plano', 'Usar variables de entorno o secretos', 'Ejecutar como root siempre', 'Rutas relativas ambiguas'], answer: 1, exp: 'Nunca se hardcodean contraseñas. Se inyectan en tiempo de ejecución o se leen de vaults seguros.' },
-                    { q: '¿Qué aporta el logging con timestamp?', options: ['Menos espacio', 'Trazabilidad temporal', 'Más CPU', 'Más privilegios'], answer: 1, exp: 'Saber exactamente el minuto y segundo en que falló un script es vital para cruzarlo con los logs del servidor y entender qué pasó.' },
-                    { q: '¿Qué programador usarías para tarea diaria en Linux?', options: ['at', 'cron', 'cmd', 'BIOS'], answer: 1, exp: 'El demonio cron ejecuta tareas programadas recurrentes según el crontab.' },
-                    { q: '¿Qué herramienta Windows automatiza tareas periódicas?', options: ['Task Scheduler', 'grep', 'passwd', 'top'], answer: 0, exp: 'El Programador de Tareas (Task Scheduler) es el equivalente de cron en entornos Microsoft.' },
-                    { q: '¿Qué cmdlet lista procesos en PowerShell?', options: ['Set-Process', 'Get-Process', 'New-Process', 'Read-Process'], answer: 1, exp: 'Get-Process (alias ps o gps) lista los procesos en ejecución en local o remoto.' },
-                    { q: '¿Qué permiso Linux limita ejecución al propietario?', options: ['chmod 777', 'chmod 700', 'chmod 644', 'chmod 555'], answer: 1, exp: '700 da permisos rwx (lectura, escritura, ejecución) solo al dueño. El grupo y el resto del mundo no tienen ningún permiso (0).' },
-                    { q: '¿Qué error evita usar rutas absolutas?', options: ['Errores de contexto', 'Errores SQL', 'Errores de RAM', 'Errores DNS'], answer: 0, exp: 'Si usas rutas relativas en un script ejecutado por cron, fallará, porque cron arranca desde un directorio distinto a tu sesión de usuario.' },
-                    { q: '¿Qué diferencia un backup profesional de uno amateur?', options: ['Nombre bonito', 'Verificación y restauración probada', 'Más tamaño', 'Más compresión'], answer: 1, exp: 'Un backup no existe hasta que no has probado a restaurarlo con éxito. Esa es la diferencia entre un administrador de sistemas y un novato.' },
-                    { q: '¿Qué herramienta Linux destaca para sincronización incremental?', options: ['top', 'paint', 'rsync', 'nano'], answer: 2, exp: 'Rsync compara archivos y solo transmite las diferencias (deltas), ahorrando un ancho de banda masivo en backups.' },
-                    { q: '¿Qué cmdlet PowerShell crea ZIP de carpetas?', options: ['Compress-Archive', 'Expand-Text', 'Join-Zip', 'Write-File'], answer: 0, exp: 'Compress-Archive comprime uno o varios archivos y directorios en formato ZIP.' },
-                    { q: '¿Qué práctica mejora seguridad del backup?', options: ['Sin contraseña', 'Cifrado', 'Eliminar logs', 'Sin fecha'], answer: 1, exp: 'Si te roban el disco de backup, que los datos estén cifrados evitará una fuga de datos. Es obligatorio por el RGPD.' },
-                    { q: '¿Qué comando CLI administra AWS?', options: ['aws', 'az', 'cloud', 'vm'], answer: 0, exp: 'El CLI oficial de Amazon Web Services se llama simplemente "aws".' },
-                    { q: '¿Qué comando CLI administra Azure?', options: ['aws', 'az', 'vmware', 'sql'], answer: 1, exp: 'El comando base para interactuar con Microsoft Azure desde la terminal es "az".' },
-                    { q: '¿Qué plataforma destaca por dashboards y API robusta?', options: ['Nagios', 'Zabbix', 'cron', 'Bash'], answer: 1, exp: 'Zabbix es un sistema moderno de monitorización con una interfaz excelente y recolección avanzada de métricas.' },
-                    { q: '¿Qué solución clásica usa alertas por umbral?', options: ['Nagios', 'Docker', 'Oracle', 'tar'], answer: 0, exp: 'Nagios es el abuelo de la monitorización. Funciona definiendo umbrales (ej. disco > 90% = WARNING) y lanzando chequeos.' },
-                    { q: '¿Qué integración moderna reduce caídas automáticamente?', options: ['CLI + scripts + monitorización', 'Solo logs', 'Solo backups', 'Solo antivirus'], answer: 0, exp: 'Las alertas de Zabbix/Prometheus disparando scripts vía CLI que reinician servicios bloqueados. Eso es "Auto-remediación".' },
-                    { q: '¿Objetivo final de la monitorización avanzada?', options: ['Más gráficos', 'Identificar causa raíz', 'Más usuarios', 'Más tablas'], answer: 1, exp: 'Tener miles de gráficas no sirve. El objetivo es identificar rápidamente por qué ha fallado el servicio y arreglarlo (Root Cause Analysis).' }
+                    { q: 'At the end of a phone call, the phrase ………… is used to end the conversation in a friendly way.', options: ['I\'ll call again', 'Talk to you soon', 'Yours sincerely', 'Dear Sir or Madam'], answer: 1, exp: '"Talk to you soon" es una frase muy habitual y amistosa para empezar a despedirse por teléfono.' },
+                    { q: 'In an email, the phrase ………… is used when you don’t know the name of the recipient.', options: ['Dear Sir or Madam', 'Best wishes', 'Hi Mary', 'All the best'], answer: 0, exp: 'Al igual que en las cartas físicas, si no hay un nombre al que dirigirse, lo correcto es "Dear Sir or Madam".' },
+                    { q: 'In a phone call, the phrase ………… is used to ask the reason for the call.', options: ['Who\'s calling?', 'Can you hold?', 'Can you repeat that?', 'Can I ask what it\'s about?'], answer: 3, exp: '"Can I ask what it\'s about?" es la manera educada de preguntar de qué va el asunto antes de pasar la llamada.' },
+                    { q: 'In an email, the phrase ………… means that you expect a response.', options: ['I look forward to hear from you soon', 'I am looking forward to hear from you soon', 'I look forward for hearing from you soon', 'I look forward to hearing from you soon'], answer: 3, exp: 'Recuerda: la frase hecha correcta es "I look forward to" obligatoriamente seguida de verbo en "-ing".' },
+                    { q: 'In a phone call, the phrase ………… is used to introduce yourself.', options: ['It\'s John McCarthy here', 'Good morning', 'I\'m John McCarthy', 'Hi there'], answer: 0, exp: 'Por teléfono en inglés, presentarse usando "It\'s [Nombre] here" o "This is [Nombre]" es lo más estándar.' },
+                    { q: 'I’m afraid Mr. Brown is not available at the moment. Can you ………… later?', options: ['hang up', 'put through', 'hold on', 'call back'], answer: 3, exp: 'Si alguien no está disponible, se suele pedir que vuelvan a intentarlo más tarde con "call back" (volver a llamar).' },
+                    { q: 'In an email, the phrase ………… is used when you don\'t know the recipient’s name.', options: ['Best regards', 'Hello everyone', 'Yours faithfully', 'Yours sincerely'], answer: 2, exp: 'Va en pareja: si abres un correo con "Dear Sir/Madam", la norma formal exige que lo cierres con "Yours faithfully".' },
+                    { q: 'In a phone call, the phrase ………… is used when you want the other person to speak more slowly.', options: ['Would you like to leave a message?', 'Who shall I say is calling?', 'Can you spell it?', 'Can you slow down, please?'], answer: 3, exp: '"Can you slow down, please?" es pedir explícitamente que la otra persona reduzca la velocidad al hablar.' },
+                    { q: 'In an email, the phrase ‘Best regards’ is used when ………….', options: ['you open the email', 'you attach a file', 'you close the email', 'you ask for information'], answer: 2, exp: '"Best regards" o "Kind regards" (Saludos cordiales) es la despedida por excelencia en emails de trabajo.' },
+                    { q: 'In a phone call, the phrase ‘I’ll call back later’ is used when …………', options: ['you want to leave a message', 'you will phone again at another time', 'you are confirming a meeting', 'you want to finish the call'], answer: 1, exp: 'Significa literalmente "Te devolveré la llamada / volveré a llamar luego".' },
+                    { q: 'In a phone call, the phrase ………… is used to ask if a day is convenient for the other person.', options: ['Would Monday suit you?', 'Does Monday come well to you?', 'Is Monday coming good to you?', 'Would Monday be suit?'], answer: 0, exp: '"To suit" significa convenir o venir bien. Es la forma correcta de agendar algo ("Would 10 AM suit you?").' },
+                    { q: 'In an email, the phrase ………… is used to make a formal request.', options: ['Would it be possible to...?', 'One more time, please?', 'Sorry, what did you say your name was?', 'Can I take a message?'], answer: 0, exp: '"¿Sería posible...?" es la manera más indirecta y por tanto más educada de pedir un favor formal por escrito.' },
+                    { q: 'When someone says ‘I’m afraid the line is busy’, it means that ………….', options: ['the person is not in the office', 'the phone is broken', 'the person is already on another call', 'the call has ended'], answer: 2, exp: 'Si "the line is busy" (o "engaged" en UK), significa que el destinatario ya está comunicando en otra llamada.' },
+                    { q: 'In an email, the abbreviation ………… is used to include extra information for reference.', options: ['FYI', 'ASAP', 'EOD', 'OOO'], answer: 0, exp: 'FYI ("For Your Information") se usa para reenviar datos útiles que no requieren ninguna acción directa.' },
+                    { q: 'In an email, the abbreviation ‘NRN’ is used to mean ………….', options: ['Needs Review Now', 'New Reading Notice', 'No Reply Necessary', 'Next Road North'], answer: 2, exp: 'NRN avisa al receptor de que es solo un correo informativo y no están obligados a gastar tiempo respondiendo.' },
+                    { q: 'In a phone call, the phrase ‘Hold on, please’ is used when ………….', options: ['you want to finish the call', 'you ask the caller to wait for a moment', 'you don\'t understand', 'you are leaving a message'], answer: 1, exp: '"Hold on" o "Hold the line" son phrasal verbs imperativos para que no cuelguen mientras esperas o transfieres.' },
+                    { q: 'In a phone call, the phrase ………… is used when you are not available at a specific time.', options: ['I won\'t be able to make Thursday', 'I\'ll make Thursday', 'I go on Thursday', 'I attend Thursday'], answer: 0, exp: '"To make it" en este contexto significa poder asistir o cuadrar el horario. Negándolo indicas que es imposible.' },
+                    { q: 'If someone says ‘Could you repeat that, please?‘ it means ………….', options: ['they understood everything', 'they want to end the call', 'they didn\'t hear or understand clearly', 'they are taking notes'], answer: 2, exp: 'Literalmente es pedir que repitan lo último que dijeron porque la comunicación falló o no lo captaron.' },
+                    { q: 'Please don’t …………. I’ll be with you in a moment.', options: ['call back', 'pick up', 'hold', 'hang up'], answer: 3, exp: '"Hang up" es colgar el aparato. Le estás pidiendo que por favor mantenga la línea y no finalice la llamada.' },
+                    { q: 'I tried to call him, but he didn’t ………… the phone.', options: ['put through', 'hold on', 'pick up', 'hang on'], answer: 2, exp: '"Pick up" significa descolgar o coger el teléfono.' },
+                    { q: 'In a phone call, the phrase “Would you like to leave a message?” is used when ………….', options: ['the line is disconnected', 'the person is not available', 'the call is ending', 'the number is wrong'], answer: 1, exp: 'Es el clásico "¿Quiere dejarle un mensaje?" cuando el destinatario está ocupado o fuera de la oficina.' },
+                    { q: 'In an email, the abbreviation ‘ASAP’ is used when something should be done ………….', options: ['eventually', 'at the end of the day', 'right away', 'without confirmation'], answer: 2, exp: 'ASAP ("As Soon As Possible") es la indicación universal de que una tarea requiere máxima prioridad e inmediatez.' },
+                    { q: 'Can you ………… me through to Sally Jones, please?', options: ['send', 'take', 'put', 'pass'], answer: 2, exp: 'El phrasal verb inamovible para pedir que te pasen una llamada con una extensión u otra persona es "put through".' },
+                    { q: 'In an email, the phrase ‘I would be grateful if you could…” is used to ………….', options: ['give an order', 'make a polite request', 'complain strongly', 'refuse a request'], answer: 1, exp: '"Estaría muy agradecido si pudiera..." es una petición que suaviza órdenes en entornos corporativos.' },
+                    { q: 'In an email, the phrase ………… is used as a friendly informal closing.', options: ['All the best', 'Yours faithfully', 'Yours sincerely', 'Yours truly'], answer: 0, exp: 'Para cerrar un correo con colegas con los que tienes confianza, "All the best", "Cheers" o "Best" son ideales.' },
+                    { q: 'In an email, the phrase ‘Please find attached’ is used when ………….', options: ['you include a file or document', 'you forgot to attach something', 'you are requesting a meeting', 'you are confirming attendance'], answer: 0, exp: 'Es la frase protocolaria para advertir de que el email contiene un archivo adjunto que deben abrir y revisar.' },
+                    { q: 'In an email, the phrase ‘Just a quick note to…‘ is typically used in ………….', options: ['complaints', 'legal documents', 'very formal emails', 'informal or friendly emails'], answer: 3, exp: '"Solo unas líneas para..." se usa para ir directo al grano con un tono relajado e informal entre compañeros.' },
+                    { q: 'In an email, the phrase ‘Yours sincerely’ is used when ………….', options: ['you are writing informally', 'you don\'t know the recipient\'s name', 'you know the recipient\'s name', 'you expect a quick reply'], answer: 2, exp: 'A diferencia de "faithfully", "Yours sincerely" solo se emplea si has abierto el correo usando el apellido de la persona (ej. Dear Mr. Johnson).' },
+                    { q: 'Can you ………… a second? I need to check if she’s available.', options: ['hang on', 'pick up', 'call back', 'put through'], answer: 0, exp: '"Hang on" es el equivalente informal de "hold on". Significa "espera al aparato".' },
+                    { q: 'In a phone call, the phrase “Who’s calling, please?” is used when ………….', options: ['you want to transfer the call', 'you are ending the conversation', 'you are taking a message', 'you want to know the caller\'s identity'], answer: 3, exp: 'Antes de pasar una llamada, un telefonista te preguntará educadamente "¿De parte de quién?" ("Who is calling?").' }
                 ]
             }
         };
@@ -567,15 +660,15 @@
 
             let html = `
                 <div class="mb-6">
-                    <h4 class="text-lg font-bold text-gray-800 mb-4">${currentQuestionIndex + 1}. ${qData.q}</h4>
+                    <h4 class="text-lg font-bold text-gray-100 mb-4">${currentQuestionIndex + 1}. ${qData.q}</h4>
                     <div class="space-y-3" id="optionsContainer">
             `;
 
             qData.options.forEach((opt, idx) => {
                 html += `
-                    <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 cursor-pointer hover:bg-blue-50 transition option-label bg-white" onclick="selectOption()">
-                        <input type="radio" name="currentQ" value="${idx}" class="form-radio h-5 w-5 text-blue-600 focus:ring-blue-500">
-                        <span class="text-gray-700 font-medium">${opt}</span>
+                    <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-600 cursor-pointer hover:bg-gray-700 transition option-label bg-gray-800" onclick="selectOption()">
+                        <input type="radio" name="currentQ" value="${idx}" class="form-radio h-5 w-5 text-blue-500 focus:ring-blue-500 bg-gray-700 border-gray-500">
+                        <span class="text-gray-200 font-medium">${opt}</span>
                     </label>
                 `;
             });
@@ -624,35 +717,38 @@
             
             if (isCorrect) {
                 score++;
-                selected.closest('label').classList.replace('border-gray-200', 'border-green-500');
-                selected.closest('label').classList.replace('hover:bg-blue-50', 'bg-green-100');
+                selected.closest('label').classList.replace('border-gray-600', 'border-green-500');
+                selected.closest('label').classList.replace('bg-gray-800', 'bg-green-900');
+                selected.closest('label').classList.replace('hover:bg-gray-700', 'bg-opacity-40');
                 
-                feedbackBox.className = "rounded-lg p-4 mt-6 border border-green-400 bg-green-50";
+                feedbackBox.className = "rounded-lg p-4 mt-6 border border-green-500 bg-green-900 bg-opacity-30";
                 feedbackBox.innerHTML = `
                     <div class="flex items-start">
-                        <i class="fas fa-check-circle text-green-600 text-xl mt-0.5 mr-3"></i>
+                        <i class="fas fa-check-circle text-green-400 text-xl mt-0.5 mr-3"></i>
                         <div>
-                            <h5 class="text-green-800 font-bold mb-1">¡Correcto!</h5>
-                            <p class="text-green-700 text-sm leading-relaxed">${qData.exp}</p>
+                            <h5 class="text-green-300 font-bold mb-1">¡Correcto!</h5>
+                            <p class="text-green-200 text-sm leading-relaxed">${qData.exp}</p>
                         </div>
                     </div>
                 `;
             } else {
                 // Marcar el error
-                selected.closest('label').classList.replace('border-gray-200', 'border-red-500');
-                selected.closest('label').classList.replace('hover:bg-blue-50', 'bg-red-100');
+                selected.closest('label').classList.replace('border-gray-600', 'border-red-500');
+                selected.closest('label').classList.replace('bg-gray-800', 'bg-red-900');
+                selected.closest('label').classList.replace('hover:bg-gray-700', 'bg-opacity-40');
                 
                 // Mostrar cuál era la buena
-                labels[qData.answer].classList.replace('border-gray-200', 'border-green-500');
-                labels[qData.answer].classList.replace('bg-white', 'bg-green-50');
+                labels[qData.answer].classList.replace('border-gray-600', 'border-green-500');
+                labels[qData.answer].classList.replace('bg-gray-800', 'bg-green-900');
+                labels[qData.answer].classList.add('bg-opacity-30');
 
-                feedbackBox.className = "rounded-lg p-4 mt-6 border border-red-400 bg-red-50";
+                feedbackBox.className = "rounded-lg p-4 mt-6 border border-red-500 bg-red-900 bg-opacity-30";
                 feedbackBox.innerHTML = `
                     <div class="flex items-start">
-                        <i class="fas fa-times-circle text-red-600 text-xl mt-0.5 mr-3"></i>
+                        <i class="fas fa-times-circle text-red-400 text-xl mt-0.5 mr-3"></i>
                         <div>
-                            <h5 class="text-red-800 font-bold mb-1">Incorrecto</h5>
-                            <p class="text-red-700 text-sm leading-relaxed">${qData.exp}</p>
+                            <h5 class="text-red-300 font-bold mb-1">Incorrecto</h5>
+                            <p class="text-red-200 text-sm leading-relaxed">${qData.exp}</p>
                         </div>
                     </div>
                 `;
@@ -663,10 +759,10 @@
             // Cambiar botones del footer
             const isLastQuestion = (currentQuestionIndex === test.questions.length - 1);
             const nextBtnText = isLastQuestion ? 'Finalizar Test' : 'Siguiente Pregunta <i class="fas fa-arrow-right ml-2"></i>';
-            const btnColor = isLastQuestion ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-800 hover:bg-gray-900';
+            const btnColor = isLastQuestion ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600';
             
             document.getElementById('actionButtons').innerHTML = `
-                <button onclick="nextQuestion()" class="px-6 py-2 ${btnColor} text-white font-semibold rounded shadow-md transition flex items-center">
+                <button onclick="nextQuestion()" class="px-6 py-2 ${btnColor} text-white font-semibold rounded shadow-md transition flex items-center border border-gray-600">
                     ${nextBtnText}
                 </button>
             `;
@@ -689,7 +785,7 @@
             const test = testDB[currentTestId];
             const total = test.questions.length;
             const percentage = ((score / total) * 100).toFixed(1);
-            let resultClass = percentage >= 50 ? 'text-green-600' : 'text-red-600';
+            let resultClass = percentage >= 50 ? 'text-green-400' : 'text-red-400';
             let message = percentage >= 50 ? '¡Buen trabajo! Has superado el simulacro.' : 'Necesitas repasar más la teoría. ¡No te rindas!';
             
             document.getElementById('questionProgress').innerText = "Test Finalizado";
@@ -699,14 +795,14 @@
                     <div class="text-6xl mb-4 ${percentage >= 50 ? 'text-green-500' : 'text-red-500'}">
                         <i class="fas ${percentage >= 50 ? 'fa-award' : 'fa-book-reader'}"></i>
                     </div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-2">Resultados</h2>
-                    <p class="text-gray-600 mb-6">${message}</p>
+                    <h2 class="text-3xl font-bold text-gray-100 mb-2">Resultados</h2>
+                    <p class="text-gray-400 mb-6">${message}</p>
                     
-                    <div class="bg-gray-50 rounded-lg p-6 max-w-sm mx-auto border border-gray-200 shadow-sm">
-                        <div class="text-5xl font-black ${resultClass} mb-2">${score} <span class="text-2xl text-gray-400">/ ${total}</span></div>
-                        <div class="text-sm text-gray-500 font-medium uppercase tracking-wide">Aciertos</div>
-                        <div class="mt-4 pt-4 border-t border-gray-200">
-                            <span class="font-bold text-gray-700">Porcentaje:</span> 
+                    <div class="bg-gray-800 rounded-lg p-6 max-w-sm mx-auto border border-gray-700 shadow-sm">
+                        <div class="text-5xl font-black ${resultClass} mb-2">${score} <span class="text-2xl text-gray-500">/ ${total}</span></div>
+                        <div class="text-sm text-gray-400 font-medium uppercase tracking-wide">Aciertos</div>
+                        <div class="mt-4 pt-4 border-t border-gray-700">
+                            <span class="font-bold text-gray-300">Porcentaje:</span> 
                             <span class="${resultClass} font-bold">${percentage}%</span>
                         </div>
                     </div>
@@ -714,7 +810,7 @@
             `;
             
             document.getElementById('actionButtons').innerHTML = `
-                <button onclick="closeModal()" class="px-6 py-2 bg-gray-800 text-white font-semibold rounded hover:bg-gray-900 shadow-md transition">
+                <button onclick="closeModal()" class="px-6 py-2 bg-gray-700 text-white font-semibold rounded hover:bg-gray-600 border border-gray-600 shadow-md transition">
                     Cerrar y volver al menú
                 </button>
             `;

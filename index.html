@@ -20,7 +20,7 @@
             overflow: hidden;
         }
         .subject-content.active {
-            max-height: 2000px;
+            max-height: 2000px; /* Aumentado por si hay muchos tests */
             opacity: 1;
         }
         .rotate-icon {
@@ -73,268 +73,9 @@
             <p class="mt-4 text-lg text-gray-400">Despliega cada módulo para ver los tests disponibles.</p>
         </div>
 
-        <div class="space-y-4">
-            
-            <!-- Asignatura 1: ASO -->
-            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('aso')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-blue-400">
-                            <i class="fab fa-linux text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Administración de Sistemas Operativos (ASO)</h3>
-                    </div>
-                    <i id="icon-aso" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-aso" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Simulacros sobre administración de Windows Server, Linux (Ubuntu/Debian), gestión de usuarios, procesos, etc.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-aso">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('aso_1')">
-                                <span class="font-medium text-gray-200">Test 1: Scripting y Backups</span>
-                                <button class="text-blue-400 hover:text-blue-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('aso_2')">
-                                <span class="font-medium text-gray-200">Test 2: AD, Samba, NFS y Kerberos</span>
-                                <button class="text-blue-400 hover:text-blue-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asignatura 2: SRI -->
-            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('sri')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-green-400">
-                            <i class="fas fa-network-wired text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Servicios de Red e Internet (SRI)</h3>
-                    </div>
-                    <i id="icon-sri" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-sri" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Tests sobre DNS, DHCP, servidores web (Apache/Nginx), FTP, correo electrónico, etc.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-sri">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('sri_1')">
-                                <span class="font-medium text-gray-200">Test 1: Conceptos Básicos, AD, DNS y FTP</span>
-                                <button class="text-green-400 hover:text-green-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('sri_2')">
-                                <span class="font-medium text-gray-200">Test 2: Correo, IRC, Streaming y VoIP</span>
-                                <button class="text-green-400 hover:text-green-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asignatura 3: SAD -->
-            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('sad')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-red-400">
-                            <i class="fas fa-shield-alt text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Seguridad y Alta Disponibilidad (SAD)</h3>
-                    </div>
-                    <i id="icon-sad" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-sad" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Evaluaciones sobre criptografía, cortafuegos, copias de seguridad, clusters, etc.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-sad">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('sad_1')">
-                                <span class="font-medium text-gray-200">Test 1: Conceptos y Criptografía</span>
-                                <button class="text-red-400 hover:text-red-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('sad_2')">
-                                <span class="font-medium text-gray-200">Test 2: Redes, Malware y HA</span>
-                                <button class="text-red-400 hover:text-red-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-             <!-- Asignatura 4: IAW -->
-             <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('iaw')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-purple-400">
-                            <i class="fas fa-laptop-code text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Implantación de Aplicaciones Web (IAW)</h3>
-                    </div>
-                    <i id="icon-iaw" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-iaw" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Tests sobre PHP, bases de datos web, CMS (WordPress, Moodle), despliegue de aplicaciones, etc.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-iaw">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('iaw_1')">
-                                <span class="font-medium text-gray-200">Test 1: HTML, CSS y JS</span>
-                                <button class="text-purple-400 hover:text-purple-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('iaw_2')">
-                                <span class="font-medium text-gray-200">Test 2: PHP y MySQLi</span>
-                                <button class="text-purple-400 hover:text-purple-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <!-- NUEVOS TESTS AÑADIDOS -->
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('iaw_3')">
-                                <span class="font-medium text-gray-200">Test 3: PHP Básico (Ampliación)</span>
-                                <button class="text-purple-400 hover:text-purple-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('iaw_4')">
-                                <span class="font-medium text-gray-200">Test 4: PHP Avanzado (Ampliación)</span>
-                                <button class="text-purple-400 hover:text-purple-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('iaw_5')">
-                                <span class="font-medium text-gray-200">Test 5: PHP, BD y Front (Ampliación)</span>
-                                <button class="text-purple-400 hover:text-purple-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asignatura 5: ASGBD -->
-             <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('asgbd')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-yellow-500">
-                            <i class="fas fa-database text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Administración de Sistemas Gestores de Bases de Datos (ASGBD)</h3>
-                    </div>
-                    <i id="icon-asgbd" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-asgbd" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Simulacros sobre instalación, configuración, seguridad y mantenimiento de SGBD (MySQL/MariaDB, Oracle, etc.).</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-asgbd">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('asgbd_1')">
-                                <span class="font-medium text-gray-200">Test 1: Conceptos Básicos y PL/SQL</span>
-                                <button class="text-yellow-500 hover:text-yellow-400 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('asgbd_2')">
-                                <span class="font-medium text-gray-200">Test 2: Rendimiento, Backups y Scripts</span>
-                                <button class="text-yellow-500 hover:text-yellow-400 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asignatura 6: EIE -->
-            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('eie')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-orange-400">
-                            <i class="fas fa-briefcase text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Empresa e Iniciativa Emprendedora (EIE)</h3>
-                    </div>
-                    <i id="icon-eie" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-eie" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Tests sobre planes de empresa, formas jurídicas, contabilidad básica y emprendimiento.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-eie">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center">
-                                <span class="font-medium text-gray-400">Esperando contenido...</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asignatura 7: DASP -->
-            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('dasp')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-teal-400">
-                            <i class="fas fa-microchip text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Digitalización Aplicada a los Sectores Productivos (DASP)</h3>
-                    </div>
-                    <i id="icon-dasp" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-dasp" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Simulacros sobre Industria 4.0/5.0, IoT, Cloud, Inteligencia Artificial, Big Data y transformación digital.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-dasp">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('dasp_1')">
-                                <span class="font-medium text-gray-200">Test 1: IT/OT, IoT, Cloud e IA</span>
-                                <button class="text-teal-400 hover:text-teal-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('dasp_2')">
-                                <span class="font-medium text-gray-200">Test 2: Machine Learning, Big Data y Estrategia</span>
-                                <button class="text-teal-400 hover:text-teal-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asignatura 8: Inglés Profesional -->
-            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('ing')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-pink-400">
-                            <i class="fas fa-language text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Inglés Profesional (ING)</h3>
-                    </div>
-                    <i id="icon-ing" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-ing" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Tests de inglés técnico, vocabulario laboral, correos electrónicos y llamadas telefónicas.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-ing">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('ing_1')">
-                                <span class="font-medium text-gray-200">Test 1: Entorno Laboral y Puestos</span>
-                                <button class="text-pink-400 hover:text-pink-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('ing_2')">
-                                <span class="font-medium text-gray-200">Test 2: Teléfono y Correo Electrónico</span>
-                                <button class="text-pink-400 hover:text-pink-300 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asignatura 9: Sostenibilidad -->
-            <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('sost')">
-                    <div class="flex items-center">
-                        <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 text-emerald-500">
-                            <i class="fas fa-leaf text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-100 text-left">Sostenibilidad Aplicada al Sistema Productivo (SOST)</h3>
-                    </div>
-                    <i id="icon-sost" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                </button>
-                <div id="content-sost" class="subject-content bg-gray-900 border-t border-gray-700">
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-4">Tests sobre desarrollo sostenible, huella ecológica, economía circular, normativa ESG y transición justa.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-sost">
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('sost_1')">
-                                <span class="font-medium text-gray-200">Test 1: Conceptos, ODS y Medio Ambiente</span>
-                                <button class="text-emerald-500 hover:text-emerald-400 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('sost_2')">
-                                <span class="font-medium text-gray-200">Test 2: Impacto Social, Certificaciones y ESG</span>
-                                <button class="text-emerald-500 hover:text-emerald-400 focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Contenedor dinámico de asignaturas -->
+        <div class="space-y-4" id="subjects-container">
+            <!-- El contenido se generará dinámicamente mediante JS -->
         </div>
     </main>
 
@@ -379,6 +120,175 @@
 
     <!-- Scripts -->
     <script>
+        // CONFIGURACIÓN DE ASIGNATURAS Y TESTS FRONT-END
+        // Si mañana quieres añadir un test a DASP, simplemente lo añades a su array 'tests'.
+        // Si quieres añadir una asignatura nueva, copias un bloque entero de estos y listo.
+        const subjectsConfig = [
+            {
+                id: 'aso',
+                title: 'Administración de Sistemas Operativos (ASO)',
+                icon: 'fab fa-linux',
+                colorClass: 'text-blue-400',
+                hoverClass: 'hover:text-blue-300',
+                desc: 'Simulacros sobre administración de Windows Server, Linux (Ubuntu/Debian), gestión de usuarios, procesos, etc.',
+                tests: [
+                    { id: 'aso_1', title: 'Test 1: Scripting y Backups' },
+                    { id: 'aso_2', title: 'Test 2: AD, Samba, NFS y Kerberos' }
+                ]
+            },
+            {
+                id: 'sri',
+                title: 'Servicios de Red e Internet (SRI)',
+                icon: 'fas fa-network-wired',
+                colorClass: 'text-green-400',
+                hoverClass: 'hover:text-green-300',
+                desc: 'Tests sobre DNS, DHCP, servidores web (Apache/Nginx), FTP, correo electrónico, etc.',
+                tests: [
+                    { id: 'sri_1', title: 'Test 1: Conceptos Básicos, AD, DNS y FTP' },
+                    { id: 'sri_2', title: 'Test 2: Correo, IRC, Streaming y VoIP' }
+                ]
+            },
+            {
+                id: 'sad',
+                title: 'Seguridad y Alta Disponibilidad (SAD)',
+                icon: 'fas fa-shield-alt',
+                colorClass: 'text-red-400',
+                hoverClass: 'hover:text-red-300',
+                desc: 'Evaluaciones sobre criptografía, cortafuegos, copias de seguridad, clusters, etc.',
+                tests: [
+                    { id: 'sad_1', title: 'Test 1: Conceptos y Criptografía' },
+                    { id: 'sad_2', title: 'Test 2: Redes, Malware y HA' }
+                ]
+            },
+            {
+                id: 'iaw',
+                title: 'Implantación de Aplicaciones Web (IAW)',
+                icon: 'fas fa-laptop-code',
+                colorClass: 'text-purple-400',
+                hoverClass: 'hover:text-purple-300',
+                desc: 'Tests sobre PHP, bases de datos web, CMS (WordPress, Moodle), despliegue de aplicaciones, etc.',
+                tests: [
+                    { id: 'iaw_1', title: 'Test 1: HTML, CSS y JS' },
+                    { id: 'iaw_2', title: 'Test 2: PHP y MySQLi' },
+                    { id: 'iaw_3', title: 'Test 3: PHP Básico (Ampliación)' },
+                    { id: 'iaw_4', title: 'Test 4: PHP Avanzado (Ampliación)' },
+                    { id: 'iaw_5', title: 'Test 5: PHP, BD y Front (Ampliación)' }
+                ]
+            },
+            {
+                id: 'asgbd',
+                title: 'Administración de Sistemas Gestores de Bases de Datos (ASGBD)',
+                icon: 'fas fa-database',
+                colorClass: 'text-yellow-500',
+                hoverClass: 'hover:text-yellow-400',
+                desc: 'Simulacros sobre instalación, configuración, seguridad y mantenimiento de SGBD (MySQL/MariaDB, Oracle, etc.).',
+                tests: [
+                    { id: 'asgbd_1', title: 'Test 1: Conceptos Básicos y PL/SQL' },
+                    { id: 'asgbd_2', title: 'Test 2: Rendimiento, Backups y Scripts' }
+                ]
+            },
+            {
+                id: 'eie',
+                title: 'Empresa e Iniciativa Emprendedora (EIE)',
+                icon: 'fas fa-briefcase',
+                colorClass: 'text-orange-400',
+                hoverClass: 'hover:text-orange-300',
+                desc: 'Tests sobre planes de empresa, formas jurídicas, contabilidad básica y emprendimiento.',
+                tests: [] // Al estar vacío, mostrará el mensaje de "Esperando contenido..."
+            },
+            {
+                id: 'dasp',
+                title: 'Digitalización Aplicada a los Sectores Productivos (DASP)',
+                icon: 'fas fa-microchip',
+                colorClass: 'text-teal-400',
+                hoverClass: 'hover:text-teal-300',
+                desc: 'Simulacros sobre Industria 4.0/5.0, IoT, Cloud, Inteligencia Artificial, Big Data y transformación digital.',
+                tests: [
+                    { id: 'dasp_1', title: 'Test 1: IT/OT, IoT, Cloud e IA' },
+                    { id: 'dasp_2', title: 'Test 2: Machine Learning, Big Data y Estrategia' }
+                ]
+            },
+            {
+                id: 'ing',
+                title: 'Inglés Profesional (ING)',
+                icon: 'fas fa-language',
+                colorClass: 'text-pink-400',
+                hoverClass: 'hover:text-pink-300',
+                desc: 'Tests de inglés técnico, vocabulario laboral, correos electrónicos y llamadas telefónicas.',
+                tests: [
+                    { id: 'ing_1', title: 'Test 1: Entorno Laboral y Puestos' },
+                    { id: 'ing_2', title: 'Test 2: Teléfono y Correo Electrónico' }
+                ]
+            },
+            {
+                id: 'sost',
+                title: 'Sostenibilidad Aplicada al Sistema Productivo (SOST)',
+                icon: 'fas fa-leaf',
+                colorClass: 'text-emerald-500',
+                hoverClass: 'hover:text-emerald-400',
+                desc: 'Tests sobre desarrollo sostenible, huella ecológica, economía circular, normativa ESG y transición justa.',
+                tests: [
+                    { id: 'sost_1', title: 'Test 1: Conceptos, ODS y Medio Ambiente' },
+                    { id: 'sost_2', title: 'Test 2: Impacto Social, Certificaciones y ESG' }
+                ]
+            }
+        ];
+
+        // Función para inyectar dinámicamente las asignaturas en el HTML
+        function renderSubjects() {
+            const container = document.getElementById('subjects-container');
+            let html = '';
+
+            subjectsConfig.forEach(subject => {
+                let testsHtml = '';
+                
+                if (subject.tests.length > 0) {
+                    subject.tests.forEach(test => {
+                        testsHtml += `
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('${test.id}')">
+                                <span class="font-medium text-gray-200">${test.title}</span>
+                                <button class="${subject.colorClass} ${subject.hoverClass} focus:outline-none"><i class="fas fa-play"></i></button>
+                            </div>
+                        `;
+                    });
+                } else {
+                    testsHtml = `
+                        <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center col-span-full">
+                            <span class="font-medium text-gray-400">Esperando contenido...</span>
+                        </div>
+                    `;
+                }
+
+                html += `
+                    <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                        <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('${subject.id}')">
+                            <div class="flex items-center">
+                                <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 ${subject.colorClass}">
+                                    <i class="${subject.icon} text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-100 text-left">${subject.title}</h3>
+                            </div>
+                            <i id="icon-${subject.id}" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
+                        </button>
+                        <div id="content-${subject.id}" class="subject-content bg-gray-900 border-t border-gray-700">
+                            <div class="p-6">
+                                <p class="text-gray-400 mb-4">${subject.desc}</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-${subject.id}">
+                                    ${testsHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Ejecutar renderizado inicial
+        document.addEventListener('DOMContentLoaded', renderSubjects);
+
+
         // Utilidad para evitar que el HTML se inyecte directamente
         function escapeHTML(str) {
             if (typeof str !== 'string') return str;
@@ -395,6 +305,7 @@
         }
 
         // --- BASE DE DATOS DE TESTS CON EXPLICACIONES ---
+        // Aquí es donde deberás ir añadiendo tus nuevas preguntas.
         const testDB = {
             'asgbd_1': {
                 title: 'Administración de SGBD - Test 1',

@@ -174,7 +174,6 @@
                 tests: [
                     { id: 'iaw_1', title: 'Test 1: HTML, CSS y JS' },
                     { id: 'iaw_2', title: 'Test 2: PHP y MySQLi' },
-                    { id: 'iaw_3', title: 'Test 3: PHP Básico (Ampliación)' },
                     { id: 'iaw_4', title: 'Test 4: PHP Avanzado (Ampliación)' },
                     { id: 'iaw_5', title: 'Test 5: PHP, BD y Front (Ampliación)' }
                 ]
@@ -852,41 +851,7 @@
                     { q: '¿Qué función ayuda a prevenir SQL injection escapando caracteres especiales?', options: ['addslashes()', 'htmlspecialchars()', 'mysqli_real_escape_string()', 'filter_var()'], answer: 2, exp: 'mysqli_real_escape_string() escapa comillas y caracteres peligrosos para que la base de datos los trate como texto plano y no como código inyectable. Aún mejor: usar sentencias preparadas.' }
                 ]
             },
-            'iaw_3': {
-                title: 'PHP Básico (Ampliación) - Test 3',
-                questions: [
-                    { q: '¿Qué estructura en PHP ejecuta código si una condición es verdadera?', options: ['else', 'if', 'elseif', 'switch'], answer: 1, exp: '\'if\' evalúa una condición booleana para ejecutar un bloque de código si es verdadera.' },
-                    { q: '¿Qué palabra clave se usa para agregar una condición alternativa después de un if?', options: ['then', 'else', 'else if', 'elif'], answer: 1, exp: '\'else\' proporciona la ruta por defecto cuando falla la evaluación de un \'if\'.' },
-                    { q: '¿Qué bucle repite el código mientras la condición sea verdadera, comprobando al inicio?', options: ['do-while', 'foreach', 'while', 'for'], answer: 2, exp: '\'while\' evalúa la condición primero; si es falsa desde el inicio, no entra nunca al bucle.' },
-                    { q: '¿Qué bucle se ejecuta al menos una vez antes de comprobar la condición?', options: ['while', 'for', 'do-while', 'foreach'], answer: 2, exp: '\'do-while\' siempre ejecuta el código de su bloque al menos una vez antes de realizar la primera comprobación.' },
-                    { q: '¿Qué bucle es el más adecuado para recorrer un arreglo asociativo en PHP?', options: ['while', 'for', 'do-while', 'foreach'], answer: 3, exp: '\'foreach\' está diseñado específicamente para recorrer arrays sin tener que gestionar contadores o índices manuales.' },
-                    { q: '¿Qué estructura permite evaluar una variable contra múltiples valores posibles?', options: ['if-else', 'switch', 'while', 'foreach'], answer: 1, exp: '\'switch\' evalúa una misma variable contra múltiples casos posibles (case) de forma más limpia que múltiples if anidados.' },
-                    { q: '¿Qué operador lógico representa "Y" en PHP?', options: ['OR', '&&', '!', '||'], answer: 1, exp: '&& es el operador lógico estándar que representa el "AND" en PHP.' },
-                    { q: '¿Qué operador lógico representa "O" en PHP?', options: ['&&', 'AND', '||', 'NOT'], answer: 2, exp: '|| es el operador lógico estándar que representa el "OR" inclusivo en PHP.' },
-                    { q: '¿Qué método de formulario envía los datos visibles en la barra de direcciones?', options: ['POST', 'PUT', 'DELETE', 'GET'], answer: 3, exp: 'El método GET adjunta los parámetros directamente en la URL visible en el navegador.' },
-                    { q: '¿Qué método de formulario envía los datos ocultos en el cuerpo de la petición?', options: ['GET', 'REQUEST', 'POST', 'SESSION'], answer: 2, exp: 'El método POST encapsula los datos en el cuerpo de la petición HTTP, manteniéndolos fuera de la URL.' },
-                    { q: '¿Qué superglobal recibe datos de un formulario con method="get"?', options: ['$_POST', '$_REQUEST', '$_SERVER', '$_GET'], answer: 3, exp: '$_GET es el array asociativo nativo donde PHP almacena los datos enviados por la URL.' },
-                    { q: '¿Qué superglobal recibe datos de un formulario con method="post"?', options: ['$_GET', '$_FILES', '$_POST', '$_SESSION'], answer: 2, exp: '$_POST es el array asociativo donde PHP almacena los datos enviados mediante el cuerpo de una petición POST.' },
-                    { q: '¿Qué superglobal combina datos de GET, POST y COOKIE?', options: ['$_GLOBALS', '$_REQUEST', '$_INPUT', '$_DATA'], answer: 1, exp: '$_REQUEST engloba GET, POST y COOKIE, aunque por motivos de seguridad es mejor usar las variables específicas.' },
-                    { q: '¿Qué superglobal contiene información de archivos subidos al servidor?', options: ['$_POST', '$_GET', '$_FILES', '$_UPLOAD'], answer: 2, exp: '$_FILES recoge la información estructural y metadatos de los archivos subidos al servidor mediante un formulario.' },
-                    { q: '¿Qué atributo debe tener un formulario HTML para permitir la subida de archivos?', options: ['enctype="text/plain"', 'enctype="multipart/form-data"', 'method="get"', 'enctype="urlencoded"'], answer: 1, exp: 'Sin enctype="multipart/form-data", el navegador no sabrá codificar los datos binarios del archivo físico, solo mandará su nombre.' },
-                    { q: '¿Qué función se usa para abrir un archivo en PHP?', options: ['readfile()', 'file_open()', 'fopen()', 'open()'], answer: 2, exp: 'fopen() asocia un flujo (stream) a un archivo o URL especificada para poder manipularlo.' },
-                    { q: '¿Qué función se usa para leer el contenido completo de un archivo de una vez?', options: ['fgets()', 'fread()', 'file_get_contents()', 'fgetc()'], answer: 2, exp: 'file_get_contents() lee todo el archivo y lo vuelca en un string sin necesidad de abrir el manejador manualmente.' },
-                    { q: '¿Qué función se usa para escribir contenido en un archivo?', options: ['fwrite()', 'file_write()', 'fputs()', 'ambas a y c'], answer: 3, exp: 'Tanto fwrite como su alias histórico fputs sirven para escribir información en un archivo previamente abierto.' },
-                    { q: '¿Qué función se usa para cerrar un archivo previamente abierto con fopen()?', options: ['fclose()', 'close()', 'file_close()', 'fend()'], answer: 0, exp: 'fclose() libera el manejador del archivo para no saturar la memoria ni bloquear el recurso en el servidor.' },
-                    { q: '¿Qué función inicia una sesión en PHP para mantener datos entre páginas?', options: ['session_open()', 'start_session()', 'session_begin()', 'session_start()'], answer: 3, exp: 'session_start() debe ser llamada (antes de cualquier salida de texto) para iniciar o recuperar la sesión del usuario.' },
-                    { q: '¿Qué superglobal almacena variables de sesión en PHP?', options: ['$_COOKIE', '$_SESSION', '$_SERVER', '$_GLOBALS'], answer: 1, exp: '$_SESSION es el array superglobal donde persisten las variables asignadas al usuario actual.' },
-                    { q: '¿Qué función destruye por completo una sesión en PHP?', options: ['session_unset()', 'session_destroy()', 'session_end()', 'session_clear()'], answer: 1, exp: 'session_destroy() elimina los datos físicos almacenados en el servidor, destruyendo la sesión actual por completo.' },
-                    { q: '¿Qué función elimina solo las variables de sesión sin destruir la sesión?', options: ['session_destroy()', 'session_unset()', 'session_reset()', 'session_clean()'], answer: 1, exp: 'session_unset() vacía las variables actuales del array, pero el identificador y el archivo de la sesión en sí persisten.' },
-                    { q: '¿Qué función conecta a una base de datos MySQL usando la extensión MySQLi?', options: ['mysql_connect()', 'db_connect()', 'mysqli_connect()', 'mysqli_open()'], answer: 2, exp: 'mysqli_connect() establece una conexión al servidor MySQL en estilo procedimental.' },
-                    { q: '¿Qué función ejecuta una consulta SQL en MySQLi?', options: ['mysqli_run()', 'mysqli_execute()', 'mysqli_sql()', 'mysqli_query()'], answer: 3, exp: 'mysqli_query() se encarga de lanzar la instrucción SQL pura contra la base de datos a través de la conexión activa.' },
-                    { q: '¿Qué función obtiene el número de filas devueltas por un SELECT en MySQLi?', options: ['mysqli_count()', 'mysqli_num_rows()', 'mysqli_rows()', 'mysqli_row_count()'], answer: 1, exp: 'mysqli_num_rows() devuelve la cantidad de registros exactos devueltos tras un SELECT exitoso.' },
-                    { q: '¿Qué función obtiene una fila de resultados como arreglo asociativo en MySQLi?', options: ['mysqli_fetch_row()', 'mysqli_fetch_object()', 'mysqli_fetch_assoc()', 'mysqli_fetch_array()'], answer: 2, exp: 'mysqli_fetch_assoc() devuelve una fila donde las claves coinciden con los nombres de las columnas en la tabla.' },
-                    { q: '¿Qué función devuelve el último ID insertado automáticamente en MySQLi?', options: ['mysqli_insert_id()', 'mysqli_last_id()', 'mysqli_id()', 'mysqli_auto_id()'], answer: 0, exp: 'mysqli_insert_id() devuelve el último ID generado por un campo AUTO_INCREMENT durante la conexión actual.' },
-                    { q: '¿Qué es WordPress principalmente?', options: ['Un framework de PHP', 'Un sistema de gestión de contenidos (CMS)', 'Un servidor web', 'Una base de datos'], answer: 1, exp: 'WordPress es un CMS (Content Management System), es decir, un software para crear y gestionar sitios web fácilmente.' },
-                    { q: '¿En qué lenguaje de programación está escrito WordPress?', options: ['Python', 'Java', 'Ruby', 'PHP'], answer: 3, exp: 'El núcleo completo de WordPress está programado en PHP.' }
-                ]
-            },
+            
             'iaw_4': {
                 title: 'PHP Avanzado (Ampliación) - Test 4',
                 questions: [

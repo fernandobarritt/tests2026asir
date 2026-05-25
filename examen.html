@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulacros ASIR - 2º Curso (2026)</title>
+    <title>Modo Examen - ASIR 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,7 +12,6 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        /* Transiciones suaves para mostrar/ocultar contenido */
         .subject-content {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             max-height: 0;
@@ -20,7 +19,7 @@
             overflow: hidden;
         }
         .subject-content.active {
-            max-height: 2000px; /* Aumentado por si hay muchos tests */
+            max-height: 2000px;
             opacity: 1;
         }
         .rotate-icon {
@@ -29,23 +28,29 @@
         .rotate-icon.active {
             transform: rotate(180deg);
         }
+        /* Custom radio para modo examen sin desvelar colores de acierto/fallo */
+        .exam-radio:checked + span {
+            color: #fbbf24; /* yellow-400 */
+            font-weight: 600;
+        }
+        .option-label:has(input:checked) {
+            border-color: #fbbf24;
+            background-color: rgba(251, 191, 36, 0.1);
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 antialiased flex flex-col min-h-screen">
 
     <!-- Navegación -->
-<nav class="bg-gray-800 text-white shadow-md sticky top-0 z-50 border-b border-gray-700">
+    <nav class="bg-gray-800 text-white shadow-md sticky top-0 z-50 border-b border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <i class="fas fa-server text-blue-500 text-2xl mr-2"></i>
+                    <i class="fas fa-server text-yellow-500 text-2xl mr-2"></i>
                     <span class="font-bold text-xl tracking-tight">TestASIR 2026</span>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#asignaturas" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium transition">Asignaturas</a>
-                    <a href="examen.html" class="hover:bg-gray-700 text-yellow-400 px-3 py-2 rounded-md text-sm font-bold uppercase transition border border-yellow-600 shadow-sm">
-                        <i class="fas fa-graduation-cap mr-2"></i>Modo Examen
-                    </a>
+                    <a href="index.html" class="hover:bg-gray-700 text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition"><i class="fas fa-arrow-left mr-2"></i>Volver a Práctica</a>
                 </div>
             </div>
         </div>
@@ -55,84 +60,77 @@
     <header class="bg-gray-800 border-b border-gray-700">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl font-extrabold text-gray-100 sm:text-5xl md:text-6xl">
-                <span class="block text-blue-500">Simulacros de Exámenes</span>
-                <span class="block">2º Curso ASIR</span>
+                <span class="block text-yellow-500">Modo Examen Oficial</span>
             </h1>
             <p class="mt-4 max-w-2xl text-xl text-gray-400 mx-auto">
-                Prepárate para superar el ciclo superior de Administración de Sistemas Informáticos en Red con nuestros tests actualizados para el año 2026.
+                Navega libremente por las preguntas. Aciertos: +1, Fallos: -0.33. Si no la sabes, déjala en blanco.
             </p>
-            <div class="mt-10 flex justify-center gap-4">
-                <a href="#asignaturas" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg transition shadow-lg hover:shadow-xl">
-                    Ver Asignaturas
-                </a>
-            </div>
         </div>
     </header>
 
     <!-- Contenido Principal - Asignaturas -->
-    <main id="asignaturas" class="flex-grow max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 w-full">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-gray-100">Selecciona tu Asignatura</h2>
-            <p class="mt-4 text-lg text-gray-400">Despliega cada módulo para ver los tests disponibles.</p>
-        </div>
-
-        <!-- Contenedor dinámico de asignaturas -->
+    <main class="flex-grow max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 w-full">
         <div class="space-y-4" id="subjects-container">
-            <!-- El contenido se generará dinámicamente mediante JS -->
+            <!-- El contenido se generará dinámicamente -->
         </div>
     </main>
 
-    <!-- Modal para el Test -->
+    <!-- Modal para el Examen -->
     <div id="testModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-80 flex items-center justify-center p-4">
-        <div class="bg-gray-800 w-full max-w-3xl rounded-xl shadow-2xl flex flex-col max-h-[90vh] border border-gray-700">
+        <div class="bg-gray-800 w-full max-w-4xl rounded-xl shadow-2xl flex flex-col h-[90vh] border border-gray-700">
+            <!-- Header Modal -->
             <div class="px-6 py-4 border-b border-gray-700 flex justify-between items-center bg-gray-900 rounded-t-xl">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-100" id="modalTitle">Título del Test</h3>
+                    <div class="flex items-center gap-3">
+                        <h3 class="text-xl font-bold text-gray-100" id="modalTitle">Título del Test</h3>
+                        <span class="px-2 py-1 text-xs font-bold bg-yellow-600 text-white rounded uppercase">Examen</span>
+                    </div>
                     <p class="text-sm text-gray-400 font-medium mt-1" id="questionProgress"></p>
                 </div>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-200 focus:outline-none">
+                <button onclick="confirmExit()" class="text-gray-400 hover:text-red-400 focus:outline-none transition">
                     <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
-            <div class="p-6 overflow-y-auto flex-grow text-gray-200" id="modalContent">
-                <!-- El contenido de la pregunta irá aquí -->
+            
+            <!-- Contenedor Principal (Pregunta + Cuadrícula) -->
+            <div class="flex flex-col md:flex-row flex-grow overflow-hidden">
+                <!-- Columna Izquierda: Pregunta -->
+            <div class="p-6 overflow-y-auto flex-grow text-gray-200 border-b md:border-b-0 md:border-r border-gray-700" id="modalContent">
+                <!-- Dinámico -->
             </div>
+            
+            <!-- Columna Derecha: Cuadrícula de navegación rápida -->
+            <div class="w-full md:w-64 bg-gray-900 p-4 overflow-y-auto flex-shrink-0 flex flex-col hidden md:flex" id="gridColumn">
+                <h4 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Navegación</h4>
+                <div class="grid grid-cols-5 gap-2" id="gridNavigator">
+                        <!-- Dinámico -->
+                    </div>
+                    <div class="mt-auto pt-6">
+                        <button onclick="finishExam()" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded shadow-lg transition">
+                            <i class="fas fa-flag-checkered mr-2"></i> Entregar Examen
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Modal (Navegación móvil/general) -->
             <div class="px-6 py-4 border-t border-gray-700 bg-gray-900 flex justify-between items-center rounded-b-xl" id="modalFooter">
-                <div id="scoreDisplay" class="font-bold text-gray-300 hidden"></div>
-                <div class="ml-auto" id="actionButtons">
-                    <!-- Botones de Comprobar / Siguiente -->
+                <button onclick="clearSelection()" class="text-gray-400 hover:text-white text-sm flex items-center transition" title="Quitar respuesta">
+                    <i class="fas fa-eraser mr-2"></i> Borrar selección
+                </button>
+                <div class="ml-auto flex gap-2" id="actionButtons">
+                    <!-- Dinámico -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-white border-t border-gray-800 mt-auto">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <span class="font-bold text-lg text-gray-200">TestASIR 2026</span>
-                    <p class="text-gray-500 text-sm mt-1">Plataforma de simulacros no oficial.</p>
-                </div>
-                <div class="text-sm text-gray-500">
-                    &copy; 2026 TestASIR. Todos los derechos reservados.
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- Scripts -->
     <script>
-        // CONFIGURACIÓN DE ASIGNATURAS Y TESTS FRONT-END
-        // Si mañana quieres añadir un test a DASP, simplemente lo añades a su array 'tests'.
-        // Si quieres añadir una asignatura nueva, copias un bloque entero de estos y listo.
+        // --- CONFIGURACIÓN ---
         const subjectsConfig = [
             {
-                id: 'aso',
-                title: 'Administración de Sistemas Operativos (ASO)',
-                icon: 'fab fa-linux',
-                colorClass: 'text-blue-400',
-                hoverClass: 'hover:text-blue-300',
+                id: 'aso', title: 'Administración de Sistemas Operativos (ASO)', icon: 'fab fa-linux', colorClass: 'text-blue-400', hoverClass: 'hover:text-blue-300',
                 desc: 'Simulacros sobre administración de Windows Server, Linux (Ubuntu/Debian), gestión de usuarios, procesos, etc.',
                 tests: [
                     { id: 'aso_1', title: 'Test 1: Scripting y Backups (30 Preguntas)' },
@@ -142,11 +140,7 @@
                 ]
             },
             {
-                id: 'sri',
-                title: 'Servicios de Red e Internet (SRI)',
-                icon: 'fas fa-network-wired',
-                colorClass: 'text-green-400',
-                hoverClass: 'hover:text-green-300',
+                id: 'sri', title: 'Servicios de Red e Internet (SRI)', icon: 'fas fa-network-wired', colorClass: 'text-green-400', hoverClass: 'hover:text-green-300',
                 desc: 'Tests sobre DNS, DHCP, servidores web (Apache/Nginx), FTP, correo electrónico, etc.',
                 tests: [
                     { id: 'sri_1', title: 'Test 1: Conceptos Básicos, AD, DNS y FTP' },
@@ -154,25 +148,16 @@
                 ]
             },
             {
-                id: 'sad',
-                title: 'Seguridad y Alta Disponibilidad (SAD)',
-                icon: 'fas fa-shield-alt',
-                colorClass: 'text-red-400',
-                hoverClass: 'hover:text-red-300',
+                id: 'sad', title: 'Seguridad y Alta Disponibilidad (SAD)', icon: 'fas fa-shield-alt', colorClass: 'text-red-400', hoverClass: 'hover:text-red-300',
                 desc: 'Evaluaciones sobre criptografía, cortafuegos, copias de seguridad, clusters, etc.',
                 tests: [
                     { id: 'sad_1', title: 'Test 1: Conceptos y Criptografía' },
                     { id: 'sad_2', title: 'Test 2: Redes, Malware y HA' },
                     { id: 'sad_3', title: 'Test 3: Test de Clase 1' }
-
                 ]
             },
             {
-                id: 'iaw',
-                title: 'Implantación de Aplicaciones Web (IAW)',
-                icon: 'fas fa-laptop-code',
-                colorClass: 'text-purple-400',
-                hoverClass: 'hover:text-purple-300',
+                id: 'iaw', title: 'Implantación de Aplicaciones Web (IAW)', icon: 'fas fa-laptop-code', colorClass: 'text-purple-400', hoverClass: 'hover:text-purple-300',
                 desc: 'Tests sobre PHP, bases de datos web, CMS (WordPress, Moodle), despliegue de aplicaciones, etc.',
                 tests: [
                     { id: 'iaw_1', title: 'Test 1: HTML, CSS y JS' },
@@ -182,11 +167,7 @@
                 ]
             },
             {
-                id: 'asgbd',
-                title: 'Administración de Sistemas Gestores de Bases de Datos (ASGBD)',
-                icon: 'fas fa-database',
-                colorClass: 'text-yellow-500',
-                hoverClass: 'hover:text-yellow-400',
+                id: 'asgbd', title: 'Administración de Sistemas Gestores de Bases de Datos (ASGBD)', icon: 'fas fa-database', colorClass: 'text-yellow-500', hoverClass: 'hover:text-yellow-400',
                 desc: 'Simulacros sobre instalación, configuración, seguridad y mantenimiento de SGBD (MySQL/MariaDB, Oracle, etc.).',
                 tests: [
                     { id: 'asgbd_1', title: 'Test 1: Conceptos Básicos y PL/SQL' },
@@ -195,20 +176,12 @@
                 ]
             },
             {
-                id: 'eie',
-                title: 'Itinerario Personal para la Empleabilidad',
-                icon: 'fas fa-briefcase',
-                colorClass: 'text-orange-400',
-                hoverClass: 'hover:text-orange-300',
+                id: 'eie', title: 'Itinerario Personal para la Empleabilidad', icon: 'fas fa-briefcase', colorClass: 'text-orange-400', hoverClass: 'hover:text-orange-300',
                 desc: 'Tests sobre planes de empresa, formas jurídicas, contabilidad básica y emprendimiento.',
-                tests: [] // Al estar vacío, mostrará el mensaje de "Esperando contenido..."
+                tests: [] 
             },
             {
-                id: 'dasp',
-                title: 'Digitalización Aplicada a los Sectores Productivos (DASP)',
-                icon: 'fas fa-microchip',
-                colorClass: 'text-teal-400',
-                hoverClass: 'hover:text-teal-300',
+                id: 'dasp', title: 'Digitalización Aplicada a los Sectores Productivos (DASP)', icon: 'fas fa-microchip', colorClass: 'text-teal-400', hoverClass: 'hover:text-teal-300',
                 desc: 'Simulacros sobre Industria 4.0/5.0, IoT, Cloud, Inteligencia Artificial, Big Data y transformación digital.',
                 tests: [
                     { id: 'dasp_1', title: 'Test 1: IT/OT, IoT, Cloud e IA' },
@@ -216,11 +189,7 @@
                 ]
             },
             {
-                id: 'ing',
-                title: 'Inglés Profesional (ING)',
-                icon: 'fas fa-language',
-                colorClass: 'text-pink-400',
-                hoverClass: 'hover:text-pink-300',
+                id: 'ing', title: 'Inglés Profesional (ING)', icon: 'fas fa-language', colorClass: 'text-pink-400', hoverClass: 'hover:text-pink-300',
                 desc: 'Tests de inglés técnico, vocabulario laboral, correos electrónicos y llamadas telefónicas.',
                 tests: [
                     { id: 'ing_1', title: 'Test 1: Entorno Laboral y Puestos' },
@@ -228,11 +197,7 @@
                 ]
             },
             {
-                id: 'sost',
-                title: 'Sostenibilidad Aplicada al Sistema Productivo (SOST)',
-                icon: 'fas fa-leaf',
-                colorClass: 'text-emerald-500',
-                hoverClass: 'hover:text-emerald-400',
+                id: 'sost', title: 'Sostenibilidad Aplicada al Sistema Productivo (SOST)', icon: 'fas fa-leaf', colorClass: 'text-emerald-500', hoverClass: 'hover:text-emerald-400',
                 desc: 'Tests sobre desarrollo sostenible, huella ecológica, economía circular, normativa ESG y transición justa.',
                 tests: [
                     { id: 'sost_1', title: 'Test 1: Conceptos, ODS y Medio Ambiente (30 Preguntas)' },
@@ -241,150 +206,78 @@
             }
         ];
 
-        // Función para inyectar dinámicamente las asignaturas en el HTML
-        function renderSubjects() {
-            const container = document.getElementById('subjects-container');
-            let html = '';
-
-            subjectsConfig.forEach(subject => {
-                let testsHtml = '';
-                
-                if (subject.tests.length > 0) {
-                    subject.tests.forEach(test => {
-                        testsHtml += `
-                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('${test.id}')">
-                                <span class="font-medium text-gray-200">${test.title}</span>
-                                <button class="${subject.colorClass} ${subject.hoverClass} focus:outline-none"><i class="fas fa-play"></i></button>
-                            </div>
-                        `;
-                    });
-                } else {
-                    testsHtml = `
-                        <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center col-span-full">
-                            <span class="font-medium text-gray-400">Esperando contenido...</span>
-                        </div>
-                    `;
-                }
-
-                html += `
-                    <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
-                        <button class="subject-toggle w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('${subject.id}')">
-                            <div class="flex items-center">
-                                <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 ${subject.colorClass}">
-                                    <i class="${subject.icon} text-xl"></i>
-                                </div>
-                                <h3 class="text-xl font-semibold text-gray-100 text-left">${subject.title}</h3>
-                            </div>
-                            <i id="icon-${subject.id}" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
-                        </button>
-                        <div id="content-${subject.id}" class="subject-content bg-gray-900 border-t border-gray-700">
-                            <div class="p-6">
-                                <p class="text-gray-400 mb-4">${subject.desc}</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tests-${subject.id}">
-                                    ${testsHtml}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-        }
-
-        // Ejecutar renderizado inicial
-        document.addEventListener('DOMContentLoaded', renderSubjects);
-
-
-        // Utilidad para evitar que el HTML se inyecte directamente
-        function escapeHTML(str) {
-            if (typeof str !== 'string') return str;
-            return str.replace(/[&<>'"]/g, function(tag) {
-                const charsToReplace = {
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    "'": '&#39;',
-                    '"': '&quot;'
-                };
-                return charsToReplace[tag] || tag;
-            });
-        }
-
-        // --- BASE DE DATOS DE TESTS CON EXPLICACIONES ---
-        // Aquí es donde deberás ir añadiendo tus nuevas preguntas.
+        // --- BASE DE DATOS ---
         const testDB = {
             'aso_1': {
                 title: 'Scripting y Backups (30 Preguntas)',
                 questions: [
-                    { q: '¿Qué línea indica el intérprete en un script Bash?', options: ['PATH', 'Shebang #!/bin/bash', 'cron', 'sudoers'], answer: 1, exp: 'El Shebang (#!/bin/bash) en la primera línea le dice al sistema qué intérprete usar para ejecutar el script. [cite: 424, 426]' },
-                    { q: '¿Qué símbolo inicia variables en PowerShell?', options: ['@', '#', '%', '$'], answer: 3, exp: 'En PowerShell, todas las variables deben comenzar con el símbolo del dólar ($). [cite: 429, 433]' },
-                    { q: '¿Qué planificador recurrente es típico en Linux?', options: ['Task Scheduler', 'attrib', 'schtasks', 'cron'], answer: 3, exp: 'El demonio cron se encarga de ejecutar tareas programadas en segundo plano en sistemas Unix/Linux. [cite: 434, 438]' },
-                    { q: '¿Qué herramienta Windows programa tareas?', options: ['journalctl', 'grep', 'tar', 'Task Scheduler'], answer: 3, exp: 'El Programador de Tareas (Task Scheduler) es la herramienta gráfica nativa de Windows para automatizar ejecuciones. [cite: 439, 443]' },
-                    { q: '¿Qué comando Bash crea usuarios?', options: ['passwd', 'mkdir', 'useradd', 'uname'], answer: 2, exp: 'useradd (o adduser) crea un nuevo usuario en el sistema Linux. [cite: 444, 447]' },
-                    { q: '¿Qué cmdlet PowerShell crea usuarios locales?', options: ['Get-Service', 'New-LocalUser', 'Write-Host', 'Stop-Process'], answer: 1, exp: 'New-LocalUser instancia una cuenta de usuario directamente en la máquina local de Windows. [cite: 449, 451]' },
-                    { q: '¿Qué comando reinicia Apache en Linux moderno?', options: ['ps aux', 'systemctl restart apache2', 'chmod +x', 'tail -f'], answer: 1, exp: 'En distribuciones con systemd (modernas), se usa systemctl para gestionar servicios como apache2. [cite: 454, 456]' },
-                    { q: '¿Qué cmdlet reinicia un servicio Windows?', options: ['Out-File', 'Restart-Service', 'Get-EventLog', 'Compress-Archive'], answer: 1, exp: 'Restart-Service detiene e inicia inmediatamente un servicio en ejecución. [cite: 459, 461]' },
-                    { q: '¿Qué comando Bash muestra procesos con más CPU?', options: ['ps ... --sort=-%cpu', 'mkdir', 'nano', 'passwd'], answer: 0, exp: 'El argumento --sort=-%cpu ordena la salida del comando ps de mayor a menor consumo de procesador. [cite: 464, 465]' },
-                    { q: '¿Qué cmdlet lista procesos ordenados por CPU?', options: ['Get-ChildItem', 'Get-Date', 'Get-Process | Sort CPU', 'Get-Help'], answer: 2, exp: 'Get-Process obtiene los procesos y Sort CPU (Sort-Object CPU) los ordena según su uso. [cite: 469, 472]' },
-                    { q: '¿Qué comando Linux consulta logs del sistema moderno?', options: ['journalctl', 'robocopy', 'az', 'aws'], answer: 0, exp: 'journalctl es la herramienta para consultar el registro centralizado de logs gestionado por systemd. [cite: 474, 475]' },
-                    { q: '¿Qué cmdlet exporta resultados a fichero?', options: ['Get-Random', 'Read-Host', 'Test-Path', 'Out-File'], answer: 3, exp: 'Out-File redirige la salida del pipeline a un archivo de texto en el disco. [cite: 479, 483]' },
-                    { q: '¿Qué ventaja principal aporta automatizar?', options: ['Más errores', 'Menos consistencia', 'Menos trazabilidad', 'Ahorro de tiempo'], answer: 3, exp: 'La automatización reduce la carga de trabajo manual y repetitiva, ahorrando tiempo y evitando errores humanos. [cite: 484, 488]' },
-                    { q: '¿Qué herramienta analiza scripts Bash?', options: ['Nagios', 'AWR', 'ShellCheck', 'Git'], answer: 2, exp: 'ShellCheck es un linter estático que detecta errores de sintaxis y malas prácticas en scripts bash. [cite: 489, 492]' },
-                    { q: '¿Qué herramienta analiza scripts PowerShell?', options: ['grep', 'PSScriptAnalyzer', 'tar', 'cron'], answer: 1, exp: 'PSScriptAnalyzer evalúa el código de PowerShell buscando problemas de calidad y formato. [cite: 494, 496]' },
-                    { q: '¿Qué práctica mejora mantenimiento del script?', options: ['No comentar', 'Usar nombres cortos', 'Ocultar errores', 'Documentar código'], answer: 3, exp: 'Documentar qué hace el código permite que otros administradores (o tú en el futuro) lo entiendan y mantengan. [cite: 499, 503]' },
-                    { q: '¿Qué permiso hace ejecutable un script Bash?', options: ['chmod 000', 'chmod +x', 'passwd', 'userdel'], answer: 1, exp: 'chmod +x añade el bit de ejecución al archivo, permitiendo lanzarlo directamente. [cite: 504, 506]' },
-                    { q: '¿Qué cmdlet solicita contraseña segura?', options: ['Write-Host', 'Get-Date', 'Read-Host -AsSecureString', 'Stop-Service'], answer: 2, exp: 'El flag -AsSecureString enmascara la entrada del usuario y cifra la cadena en memoria. [cite: 509, 512]' },
-                    { q: '¿Qué estrategia de backup copia todo el dataset?', options: ['Incremental', 'Diferencial', 'Full', 'Sync'], answer: 2, exp: 'El backup completo (Full) copia el 100% de los datos seleccionados, ocupando más espacio y tiempo. [cite: 514, 517]' },
-                    { q: '¿Qué backup guarda cambios desde la última full?', options: ['Diferencial', 'Incremental', 'Imagen', 'WORM'], answer: 0, exp: 'El diferencial compara siempre contra la última copia completa, por lo que su tamaño crece con los días. [cite: 519, 520]' },
-                    { q: '¿Qué backup guarda cambios desde la última copia?', options: ['Incremental', 'Full', 'Mirror', 'ZIP'], answer: 0, exp: 'El incremental solo copia lo que ha cambiado respecto a cualquier copia anterior inmediata. [cite: 524, 525]' },
-                    { q: '¿Qué regla recomienda 3 copias en 2 soportes y 1 off-site?', options: ['1-2-3', '3-2-1', '5-1-1', '2-3-1'], answer: 1, exp: 'La regla 3-2-1 es el estándar de oro en la estrategia de copias de seguridad. [cite: 529, 531]' },
-                    { q: '¿Qué debe probarse siempre en backups?', options: ['Nombre archivo', 'Color carpeta', 'Restauración', 'Permisos root'], answer: 2, exp: 'Un backup no sirve de nada si llegado el momento de desastre no es posible restaurar los datos con éxito. [cite: 534, 537]' },
-                    { q: '¿Con qué tenemos que tener cuidado principalmente al hacer scripting en bash?', options: ['espacios', 'admiraciones', 'almohadillas', 'símbolo igual'], answer: 0, exp: 'Bash es extremadamente estricto con los espacios en las asignaciones de variables (ej: var=valor, no var = valor). [cite: 539, 540]' },
-                    { q: '¿Qué utilidad Windows sincroniza carpetas?', options: ['grep', 'top', 'cron', 'robocopy'], answer: 3, exp: 'Robocopy es el comando avanzado nativo en Windows para replicación y sincronización de directorios. [cite: 544, 548]' },
-                    { q: '¿Qué protege datos en reposo?', options: ['PGP/7z cifrado', 'Ping', 'DNS', 'BIOS'], answer: 0, exp: 'El cifrado de archivos (como con 7-Zip o PGP) asegura que si el disco es robado, los datos no puedan ser leídos. [cite: 549, 550]' },
-                    { q: '¿Cómo terminamos un if en bash?', options: ['fi', ';', 'end', 'esac'], answer: 0, exp: 'En bash, las estructuras de control se cierran escribiendo la palabra clave al revés (if -> fi, case -> esac). [cite: 554, 555]' },
-                    { q: '¿Qué objetivo tiene monitorizar logs?', options: ['Borrar eventos', 'Reducir RAM', 'Detectar incidencias', 'Cambiar usuarios'], answer: 2, exp: 'Monitorizar permite identificar comportamientos anómalos, errores de sistema o intentos de ataque de forma temprana. [cite: 559, 562]' },
-                    { q: '¿Qué comando Azure CLI usa el PDF como ejemplo general?', options: ['az', 'aws', 'ps', 'scp'], answer: 0, exp: 'az es el comando base para invocar la interfaz de línea de comandos de Microsoft Azure. [cite: 564, 565]' },
-                    { q: '¿Qué beneficio aporta centralizar logs?', options: ['Menos trazabilidad', 'Más errores', 'Auditoría y análisis', 'Más CPU'], answer: 2, exp: 'Enviar todos los logs a un único servidor evita que un atacante los borre al hackear una máquina local y facilita el análisis global. [cite: 569, 572]' }
+                    { q: '¿Qué línea indica el intérprete en un script Bash?', options: ['PATH', 'Shebang #!/bin/bash', 'cron', 'sudoers'], answer: 1, exp: 'El Shebang (#!/bin/bash) en la primera línea le dice al sistema qué intérprete usar para ejecutar el script.' },
+                    { q: '¿Qué símbolo inicia variables en PowerShell?', options: ['@', '#', '%', '$'], answer: 3, exp: 'En PowerShell, todas las variables deben comenzar con el símbolo del dólar ($).' },
+                    { q: '¿Qué planificador recurrente es típico en Linux?', options: ['Task Scheduler', 'attrib', 'schtasks', 'cron'], answer: 3, exp: 'El demonio cron se encarga de ejecutar tareas programadas en segundo plano en sistemas Unix/Linux.' },
+                    { q: '¿Qué herramienta Windows programa tareas?', options: ['journalctl', 'grep', 'tar', 'Task Scheduler'], answer: 3, exp: 'El Programador de Tareas (Task Scheduler) es la herramienta gráfica nativa de Windows para automatizar ejecuciones.' },
+                    { q: '¿Qué comando Bash crea usuarios?', options: ['passwd', 'mkdir', 'useradd', 'uname'], answer: 2, exp: 'useradd (o adduser) crea un nuevo usuario en el sistema Linux.' },
+                    { q: '¿Qué cmdlet PowerShell crea usuarios locales?', options: ['Get-Service', 'New-LocalUser', 'Write-Host', 'Stop-Process'], answer: 1, exp: 'New-LocalUser instancia una cuenta de usuario directamente en la máquina local de Windows.' },
+                    { q: '¿Qué comando reinicia Apache en Linux moderno?', options: ['ps aux', 'systemctl restart apache2', 'chmod +x', 'tail -f'], answer: 1, exp: 'En distribuciones con systemd (modernas), se usa systemctl para gestionar servicios como apache2.' },
+                    { q: '¿Qué cmdlet reinicia un servicio Windows?', options: ['Out-File', 'Restart-Service', 'Get-EventLog', 'Compress-Archive'], answer: 1, exp: 'Restart-Service detiene e inicia inmediatamente un servicio en ejecución.' },
+                    { q: '¿Qué comando Bash muestra procesos con más CPU?', options: ['ps ... --sort=-%cpu', 'mkdir', 'nano', 'passwd'], answer: 0, exp: 'El argumento --sort=-%cpu ordena la salida del comando ps de mayor a menor consumo de procesador.' },
+                    { q: '¿Qué cmdlet lista procesos ordenados por CPU?', options: ['Get-ChildItem', 'Get-Date', 'Get-Process | Sort CPU', 'Get-Help'], answer: 2, exp: 'Get-Process obtiene los procesos y Sort CPU (Sort-Object CPU) los ordena según su uso.' },
+                    { q: '¿Qué comando Linux consulta logs del sistema moderno?', options: ['journalctl', 'robocopy', 'az', 'aws'], answer: 0, exp: 'journalctl es la herramienta para consultar el registro centralizado de logs gestionado por systemd.' },
+                    { q: '¿Qué cmdlet exporta resultados a fichero?', options: ['Get-Random', 'Read-Host', 'Test-Path', 'Out-File'], answer: 3, exp: 'Out-File redirige la salida del pipeline a un archivo de texto en el disco.' },
+                    { q: '¿Qué ventaja principal aporta automatizar?', options: ['Más errores', 'Menos consistencia', 'Menos trazabilidad', 'Ahorro de tiempo'], answer: 3, exp: 'La automatización reduce la carga de trabajo manual y repetitiva, ahorrando tiempo y evitando errores humanos.' },
+                    { q: '¿Qué herramienta analiza scripts Bash?', options: ['Nagios', 'AWR', 'ShellCheck', 'Git'], answer: 2, exp: 'ShellCheck es un linter estático que detecta errores de sintaxis y malas prácticas en scripts bash.' },
+                    { q: '¿Qué herramienta analiza scripts PowerShell?', options: ['grep', 'PSScriptAnalyzer', 'tar', 'cron'], answer: 1, exp: 'PSScriptAnalyzer evalúa el código de PowerShell buscando problemas de calidad y formato.' },
+                    { q: '¿Qué práctica mejora mantenimiento del script?', options: ['No comentar', 'Usar nombres cortos', 'Ocultar errores', 'Documentar código'], answer: 3, exp: 'Documentar qué hace el código permite que otros administradores (o tú en el futuro) lo entiendan y mantengan.' },
+                    { q: '¿Qué permiso hace ejecutable un script Bash?', options: ['chmod 000', 'chmod +x', 'passwd', 'userdel'], answer: 1, exp: 'chmod +x añade el bit de ejecución al archivo, permitiendo lanzarlo directamente.' },
+                    { q: '¿Qué cmdlet solicita contraseña segura?', options: ['Write-Host', 'Get-Date', 'Read-Host -AsSecureString', 'Stop-Service'], answer: 2, exp: 'El flag -AsSecureString enmascara la entrada del usuario y cifra la cadena en memoria.' },
+                    { q: '¿Qué estrategia de backup copia todo el dataset?', options: ['Incremental', 'Diferencial', 'Full', 'Sync'], answer: 2, exp: 'El backup completo (Full) copia el 100% de los datos seleccionados, ocupando más espacio y tiempo.' },
+                    { q: '¿Qué backup guarda cambios desde la última full?', options: ['Diferencial', 'Incremental', 'Imagen', 'WORM'], answer: 0, exp: 'El diferencial compara siempre contra la última copia completa, por lo que su tamaño crece con los días.' },
+                    { q: '¿Qué backup guarda cambios desde la última copia?', options: ['Incremental', 'Full', 'Mirror', 'ZIP'], answer: 0, exp: 'El incremental solo copia lo que ha cambiado respecto a cualquier copia anterior inmediata.' },
+                    { q: '¿Qué regla recomienda 3 copias en 2 soportes y 1 off-site?', options: ['1-2-3', '3-2-1', '5-1-1', '2-3-1'], answer: 1, exp: 'La regla 3-2-1 es el estándar de oro en la estrategia de copias de seguridad.' },
+                    { q: '¿Qué debe probarse siempre en backups?', options: ['Nombre archivo', 'Color carpeta', 'Restauración', 'Permisos root'], answer: 2, exp: 'Un backup no sirve de nada si llegado el momento de desastre no es posible restaurar los datos con éxito.' },
+                    { q: '¿Con qué tenemos que tener cuidado principalmente al hacer scripting en bash?', options: ['espacios', 'admiraciones', 'almohadillas', 'símbolo igual'], answer: 0, exp: 'Bash es extremadamente estricto con los espacios en las asignaciones de variables (ej: var=valor, no var = valor).' },
+                    { q: '¿Qué utilidad Windows sincroniza carpetas?', options: ['grep', 'top', 'cron', 'robocopy'], answer: 3, exp: 'Robocopy es el comando avanzado nativo en Windows para replicación y sincronización de directorios.' },
+                    { q: '¿Qué protege datos en reposo?', options: ['PGP/7z cifrado', 'Ping', 'DNS', 'BIOS'], answer: 0, exp: 'El cifrado de archivos (como con 7-Zip o PGP) asegura que si el disco es robado, los datos no puedan ser leídos.' },
+                    { q: '¿Cómo terminamos un if en bash?', options: ['fi', ';', 'end', 'esac'], answer: 0, exp: 'En bash, las estructuras de control se cierran escribiendo la palabra clave al revés (if -> fi, case -> esac).' },
+                    { q: '¿Qué objetivo tiene monitorizar logs?', options: ['Borrar eventos', 'Reducir RAM', 'Detectar incidencias', 'Cambiar usuarios'], answer: 2, exp: 'Monitorizar permite identificar comportamientos anómalos, errores de sistema o intentos de ataque de forma temprana.' },
+                    { q: '¿Qué comando Azure CLI usa el PDF como ejemplo general?', options: ['az', 'aws', 'ps', 'scp'], answer: 0, exp: 'az es el comando base para invocar la interfaz de línea de comandos de Microsoft Azure.' },
+                    { q: '¿Qué beneficio aporta centralizar logs?', options: ['Menos trazabilidad', 'Más errores', 'Auditoría y análisis', 'Más CPU'], answer: 2, exp: 'Enviar todos los logs a un único servidor evita que un atacante los borre al hackear una máquina local y facilita el análisis global.' }
                 ]
             },
             'aso_2': {
                 title: 'AD, Samba, NFS y Kerberos (30 Preguntas)',
                 questions: [
-                    { q: '¿Qué es LDAP?', options: ['Un sistema operativo', 'Un protocolo de directorio', 'Un lenguaje de programación', 'Un tipo de base de datos'], answer: 1, exp: 'Lightweight Directory Access Protocol es el estándar de red utilizado para consultar servicios de directorio centralizados. [cite: 574, 576]' },
-                    { q: '¿Qué es Active Directory?', options: ['Un antivirus', 'Un sistema de archivos', 'Implementación LDAP de Microsoft', 'Un firewall'], answer: 2, exp: 'Es el servicio de directorio propietario de Microsoft, pero funciona utilizando LDAP bajo el capó. [cite: 579, 582]' },
-                    { q: '¿Qué hace Kerberos?', options: ['Almacena archivos', 'Autentica mediante tickets', 'Gestiona redes', 'Crea usuarios'], answer: 1, exp: 'Kerberos es un protocolo de autenticación de red seguro que usa tickets en lugar de transmitir contraseñas continuamente. [cite: 584, 586]' },
-                    { q: '¿Qué herramienta une Linux a un dominio?', options: ['ssh', 'realmd', 'cron', 'iptables'], answer: 1, exp: 'realmd automatiza y simplifica la configuración requerida para unir un sistema Linux a un Active Directory. [cite: 589, 591]' },
-                    { q: '¿Qué es Samba?', options: ['Sistema de backups', 'Protocolo Linux', 'Implementación SMB', 'Firewall'], answer: 2, exp: 'Samba es el software open source que implementa el protocolo SMB/CIFS de Microsoft para compartir archivos en Linux. [cite: 594, 597]' },
-                    { q: '¿Qué protocolo usa Windows para compartir archivos?', options: ['FTP', 'NFS', 'SMB', 'SSH'], answer: 2, exp: 'Server Message Block (SMB) es el protocolo nativo de red en entornos Windows para el acceso a archivos e impresoras. [cite: 599, 602]' },
-                    { q: '¿Qué es NFS?', options: ['Sistema de red Linux', 'Protocolo web', 'Base de datos', 'Sistema operativo'], answer: 0, exp: 'Network File System es un protocolo tradicional de Unix/Linux para montar sistemas de archivos a través de la red local. [cite: 604, 605]' },
-                    { q: '¿Qué herramienta gestiona autenticación con AD?', options: ['SSSD', 'nano', 'grep', 'cron'], answer: 0, exp: 'System Security Services Daemon (SSSD) gestiona la caché de credenciales y la autenticación de usuarios remotos en Linux. [cite: 609, 610]' },
-                    { q: '¿Qué hace Winbind?', options: ['Monitoriza CPU', 'Permite usar usuarios AD', 'Gestiona disco', 'Configura red'], answer: 1, exp: 'Es un componente de Samba que permite a los sistemas Linux identificar e iniciar sesión a usuarios de Active Directory. [cite: 614, 616]' },
-                    { q: '¿Qué comando muestra tickets Kerberos?', options: ['kinit', 'klist', 'ssh', 'id'], answer: 1, exp: 'klist lista los tickets de concesión (TGT) actuales en caché obtenidos tras la autenticación inicial. [cite: 619, 621]' },
-                    { q: '¿Qué es SSH?', options: ['Protocolo remoto seguro', 'Sistema de archivos', 'Firewall', 'Antivirus'], answer: 0, exp: 'Secure Shell cifra toda la comunicación permitiendo gestionar servidores mediante línea de comandos de forma segura. [cite: 624, 625]' },
-                    { q: '¿Qué usa PowerShell Remoting?', options: ['FTP', 'WinRM', 'DNS', 'LDAP'], answer: 1, exp: 'Windows Remote Management (WinRM) es el protocolo base sobre el que funciona la ejecución remota de PowerShell. [cite: 629, 631]' },
-                    { q: '¿Qué hace SMB Encryption?', options: ['Borra archivos', 'Cifra datos', 'Crea usuarios', 'Gestiona red'], answer: 1, exp: 'Aplica cifrado AES a los datos en tránsito del protocolo SMB para evitar que sean esnifados en la red. [cite: 634, 636]' },
-                    { q: '¿Qué herramienta genera alertas?', options: ['Zabbix', 'Nagios', 'top', 'ps'], answer: 1, exp: 'Nagios es un sistema de monitorización clásico especialmente enfocado en chequear estados y enviar alertas. [cite: 639, 641]' },
-                    { q: '¿Qué herramienta muestra métricas?', options: ['Zabbix', 'SSH', 'cron', 'scp'], answer: 0, exp: 'Zabbix destaca por su potente capacidad de recolectar métricas y generar dashboards y gráficas visuales avanzadas. [cite: 644, 645]' },
-                    { q: '¿Qué es un controlador de dominio?', options: ['Servidor impresión', 'Servidor autentica usuarios', 'Servidor web', 'Router'], answer: 1, exp: 'El Domain Controller es el servidor clave en AD que contiene el directorio y valida los inicios de sesión. [cite: 649, 651]' },
-                    { q: '¿Qué servicio requiere sincronización horaria?', options: ['FTP', 'Kerberos', 'SSH', 'HTTP'], answer: 1, exp: 'Kerberos fallará instantáneamente si el reloj del cliente y el del servidor difieren en más de 5 minutos, por seguridad. [cite: 654, 656]' },
-                    { q: '¿Qué archivo configura Samba?', options: ['/etc/passwd', '/etc/samba/smb.conf', '/etc/hosts', '/etc/network'], answer: 1, exp: 'Es el archivo de configuración principal donde se declaran las carpetas compartidas y permisos en Samba. [cite: 659, 661]' },
-                    { q: '¿Qué comando une al dominio?', options: ['realm join', 'ssh', 'mount', 'ls'], answer: 0, exp: 'realm join se utiliza para registrar la máquina Linux y unirla formalmente a la infraestructura del dominio AD. [cite: 664, 665]' },
-                    { q: '¿Qué protocolo es más eficiente en Linux?', options: ['SMB', 'NFS', 'HTTP', 'FTP'], answer: 1, exp: 'Entre máquinas nativas Linux, NFS es considerablemente más rápido y tiene menos sobrecarga que SMB (Samba). [cite: 669, 671]' },
-                    { q: '¿Qué es WinRM?', options: ['Protocolo remoto Windows', 'Sistema archivos', 'Firewall', 'Antivirus'], answer: 0, exp: 'Es la implementación de Microsoft del protocolo de gestión WS-Management, usado para administrar máquinas Windows de forma remota. [cite: 674, 675]' },
-                    { q: '¿Qué es kinit?', options: ['Muestra tickets', 'Solicita ticket Kerberos', 'Borra usuarios', 'Configura red'], answer: 1, exp: 'kinit es el comando para identificarte ante el KDC y pedir el ticket inicial de concesión de Kerberos. [cite: 679, 681]' },
-                    { q: '¿Qué hace smbstatus?', options: ['Muestra conexiones SMB', 'Borra archivos', 'Crea usuarios', 'Configura red'], answer: 0, exp: 'Muestra en tiempo real qué clientes y máquinas están conectados a los recursos compartidos del servidor Samba. [cite: 684, 685]' },
-                    { q: '¿Qué es DNS en AD?', options: ['Firewall', 'Localiza servicios', 'Base datos', 'Protocolo remoto'], answer: 1, exp: 'Active Directory depende críticamente del DNS para que los clientes puedan localizar los controladores de dominio en la red. [cite: 689, 691]' },
-                    { q: '¿Qué es realm discover?', options: ['Busca dominio', 'Crea usuario', 'Borra red', 'Monta disco'], answer: 0, exp: 'Busca y devuelve información de configuración de un dominio Active Directory antes de intentar unirse a él. [cite: 694, 695]' },
-                    { q: '¿Qué es testparm?', options: ['Valida Samba', 'Borra logs', 'Crea usuarios', 'Gestiona red'], answer: 0, exp: 'Comprueba la sintaxis del archivo smb.conf buscando errores antes de reiniciar el servicio Samba. [cite: 699, 700]' },
-                    { q: '¿Qué es net use?', options: ['Monta unidades en Windows', 'Borra archivos', 'Crea usuarios', 'Gestiona red'], answer: 0, exp: 'Comando de la terminal de Windows para conectar y mapear unidades de red a una letra local (ej: Z:). [cite: 704, 705]' },
-                    { q: '¿Qué es CUPS?', options: ['Sistema impresión Linux', 'Firewall', 'Protocolo red', 'Antivirus'], answer: 0, exp: 'Common UNIX Printing System es el estándar para gestionar colas de impresión y compartir impresoras en Linux. [cite: 709, 710]' },
-                    { q: '¿Qué hace showmount -e?', options: ['Lista recursos NFS', 'Borra datos', 'Crea usuarios', 'Configura red'], answer: 0, exp: 'Muestra (exporta) la lista de carpetas que un servidor NFS está ofreciendo a la red local. [cite: 714, 715]' },
-                    { q: '¿Qué es NTP?', options: ['Sincroniza hora', 'Firewall', 'Base datos', 'Protocolo web'], answer: 0, exp: 'Network Time Protocol garantiza que todos los relojes de las máquinas de la red marquen exactamente el mismo segundo. [cite: 719, 720]' }
+                    { q: '¿Qué es LDAP?', options: ['Un sistema operativo', 'Un protocolo de directorio', 'Un lenguaje de programación', 'Un tipo de base de datos'], answer: 1, exp: 'Lightweight Directory Access Protocol es el estándar de red utilizado para consultar servicios de directorio centralizados.' },
+                    { q: '¿Qué es Active Directory?', options: ['Un antivirus', 'Un sistema de archivos', 'Implementación LDAP de Microsoft', 'Un firewall'], answer: 2, exp: 'Es el servicio de directorio propietario de Microsoft, pero funciona utilizando LDAP bajo el capó.' },
+                    { q: '¿Qué hace Kerberos?', options: ['Almacena archivos', 'Autentica mediante tickets', 'Gestiona redes', 'Crea usuarios'], answer: 1, exp: 'Kerberos es un protocolo de autenticación de red seguro que usa tickets en lugar de transmitir contraseñas continuamente.' },
+                    { q: '¿Qué herramienta une Linux a un dominio?', options: ['ssh', 'realmd', 'cron', 'iptables'], answer: 1, exp: 'realmd automatiza y simplifica la configuración requerida para unir un sistema Linux a un Active Directory.' },
+                    { q: '¿Qué es Samba?', options: ['Sistema de backups', 'Protocolo Linux', 'Implementación SMB', 'Firewall'], answer: 2, exp: 'Samba es el software open source que implementa el protocolo SMB/CIFS de Microsoft para compartir archivos en Linux.' },
+                    { q: '¿Qué protocolo usa Windows para compartir archivos?', options: ['FTP', 'NFS', 'SMB', 'SSH'], answer: 2, exp: 'Server Message Block (SMB) es el protocolo nativo de red en entornos Windows para el acceso a archivos e impresoras.' },
+                    { q: '¿Qué es NFS?', options: ['Sistema de red Linux', 'Protocolo web', 'Base de datos', 'Sistema operativo'], answer: 0, exp: 'Network File System es un protocolo tradicional de Unix/Linux para montar sistemas de archivos a través de la red local.' },
+                    { q: '¿Qué herramienta gestiona autenticación con AD?', options: ['SSSD', 'nano', 'grep', 'cron'], answer: 0, exp: 'System Security Services Daemon (SSSD) gestiona la caché de credenciales y la autenticación de usuarios remotos en Linux.' },
+                    { q: '¿Qué hace Winbind?', options: ['Monitoriza CPU', 'Permite usar usuarios AD', 'Gestiona disco', 'Configura red'], answer: 1, exp: 'Es un componente de Samba que permite a los sistemas Linux identificar e iniciar sesión a usuarios de Active Directory.' },
+                    { q: '¿Qué comando muestra tickets Kerberos?', options: ['kinit', 'klist', 'ssh', 'id'], answer: 1, exp: 'klist lista los tickets de concesión (TGT) actuales en caché obtenidos tras la autenticación inicial.' },
+                    { q: '¿Qué es SSH?', options: ['Protocolo remoto seguro', 'Sistema de archivos', 'Firewall', 'Antivirus'], answer: 0, exp: 'Secure Shell cifra toda la comunicación permitiendo gestionar servidores mediante línea de comandos de forma segura.' },
+                    { q: '¿Qué usa PowerShell Remoting?', options: ['FTP', 'WinRM', 'DNS', 'LDAP'], answer: 1, exp: 'Windows Remote Management (WinRM) es el protocolo base sobre el que funciona la ejecución remota de PowerShell.' },
+                    { q: '¿Qué hace SMB Encryption?', options: ['Borra archivos', 'Cifra datos', 'Crea usuarios', 'Gestiona red'], answer: 1, exp: 'Aplica cifrado AES a los datos en tránsito del protocolo SMB para evitar que sean esnifados en la red.' },
+                    { q: '¿Qué herramienta genera alertas?', options: ['Zabbix', 'Nagios', 'top', 'ps'], answer: 1, exp: 'Nagios es un sistema de monitorización clásico especialmente enfocado en chequear estados y enviar alertas.' },
+                    { q: '¿Qué herramienta muestra métricas?', options: ['Zabbix', 'SSH', 'cron', 'scp'], answer: 0, exp: 'Zabbix destaca por su potente capacidad de recolectar métricas y generar dashboards y gráficas visuales avanzadas.' },
+                    { q: '¿Qué es un controlador de dominio?', options: ['Servidor impresión', 'Servidor autentica usuarios', 'Servidor web', 'Router'], answer: 1, exp: 'El Domain Controller es el servidor clave en AD que contiene el directorio y valida los inicios de sesión.' },
+                    { q: '¿Qué servicio requiere sincronización horaria?', options: ['FTP', 'Kerberos', 'SSH', 'HTTP'], answer: 1, exp: 'Kerberos fallará instantáneamente si el reloj del cliente y el del servidor difieren en más de 5 minutos, por seguridad.' },
+                    { q: '¿Qué archivo configura Samba?', options: ['/etc/passwd', '/etc/samba/smb.conf', '/etc/hosts', '/etc/network'], answer: 1, exp: 'Es el archivo de configuración principal donde se declaran las carpetas compartidas y permisos en Samba.' },
+                    { q: '¿Qué comando une al dominio?', options: ['realm join', 'ssh', 'mount', 'ls'], answer: 0, exp: 'realm join se utiliza para registrar la máquina Linux y unirla formalmente a la infraestructura del dominio AD.' },
+                    { q: '¿Qué protocolo es más eficiente en Linux?', options: ['SMB', 'NFS', 'HTTP', 'FTP'], answer: 1, exp: 'Entre máquinas nativas Linux, NFS es considerablemente más rápido y tiene menos sobrecarga que SMB (Samba).' },
+                    { q: '¿Qué es WinRM?', options: ['Protocolo remoto Windows', 'Sistema archivos', 'Firewall', 'Antivirus'], answer: 0, exp: 'Es la implementación de Microsoft del protocolo de gestión WS-Management, usado para administrar máquinas Windows de forma remota.' },
+                    { q: '¿Qué es kinit?', options: ['Muestra tickets', 'Solicita ticket Kerberos', 'Borra usuarios', 'Configura red'], answer: 1, exp: 'kinit es el comando para identificarte ante el KDC y pedir el ticket inicial de concesión de Kerberos.' },
+                    { q: '¿Qué hace smbstatus?', options: ['Muestra conexiones SMB', 'Borra archivos', 'Crea usuarios', 'Configura red'], answer: 0, exp: 'Muestra en tiempo real qué clientes y máquinas están conectados a los recursos compartidos del servidor Samba.' },
+                    { q: '¿Qué es DNS en AD?', options: ['Firewall', 'Localiza servicios', 'Base datos', 'Protocolo remoto'], answer: 1, exp: 'Active Directory depende críticamente del DNS para que los clientes puedan localizar los controladores de dominio en la red.' },
+                    { q: '¿Qué es realm discover?', options: ['Busca dominio', 'Crea usuario', 'Borra red', 'Monta disco'], answer: 0, exp: 'Busca y devuelve información de configuración de un dominio Active Directory antes de intentar unirse a él.' },
+                    { q: '¿Qué es testparm?', options: ['Valida Samba', 'Borra logs', 'Crea usuarios', 'Gestiona red'], answer: 0, exp: 'Comprueba la sintaxis del archivo smb.conf buscando errores antes de reiniciar el servicio Samba.' },
+                    { q: '¿Qué es net use?', options: ['Monta unidades en Windows', 'Borra archivos', 'Crea usuarios', 'Gestiona red'], answer: 0, exp: 'Comando de la terminal de Windows para conectar y mapear unidades de red a una letra local (ej: Z:).' },
+                    { q: '¿Qué es CUPS?', options: ['Sistema impresión Linux', 'Firewall', 'Protocolo red', 'Antivirus'], answer: 0, exp: 'Common UNIX Printing System es el estándar para gestionar colas de impresión y compartir impresoras en Linux.' },
+                    { q: '¿Qué hace showmount -e?', options: ['Lista recursos NFS', 'Borra datos', 'Crea usuarios', 'Configura red'], answer: 0, exp: 'Muestra (exporta) la lista de carpetas que un servidor NFS está ofreciendo a la red local.' },
+                    { q: '¿Qué es NTP?', options: ['Sincroniza hora', 'Firewall', 'Base datos', 'Protocolo web'], answer: 0, exp: 'Network Time Protocol garantiza que todos los relojes de las máquinas de la red marquen exactamente el mismo segundo.' }
                 ]
             },
-
             'aso_3': {
                 title: 'Administración ASO (45 Preguntas)',
                 questions: [
@@ -435,7 +328,6 @@
                     { q: '¿Qué herramienta Windows limita privilegios remotos?', options: ['JEA', 'chrony', 'OpenLDAP', 'Nagios'], answer: 0, exp: 'Just Enough Administration (JEA) restringe las sesiones de PowerShell, dando al usuario solo los comandos exactos que necesita para trabajar, en vez de otorgarle perfil de Administrador.' }
                 ]
             },
-
             'aso_4': {
                 title: 'Kahoot ASO 2 (44 Preguntas)',
                 questions: [
@@ -485,7 +377,6 @@
                     { q: '¿Qué comando detecta servicios AD por DNS?', options: ['realm discover dominio.local', 'Get-EventLog', 'renice', 'fail2ban'], answer: 0, exp: 'Lanza peticiones SRV a los servidores DNS configurados para tratar de descubrir la estructura del bosque/dominio de AD.' }
                 ]
             },
-
             'asgbd_1': {
                 title: 'Administración de SGBD - Test 1',
                 questions: [
@@ -556,7 +447,6 @@
                     { q: '¿Objetivo final de la monitorización avanzada?', options: ['Más gráficos', 'Identificar causa raíz', 'Más usuarios', 'Más tablas'], answer: 1, exp: 'Tener miles de gráficas no sirve. El objetivo es identificar rápidamente por qué ha fallado el servicio y arreglarlo (Root Cause Analysis).' }
                 ]
             },
-
             'asgbd_3': {
                 title: 'Administración SGBD (45 Preguntas)',
                 questions: [
@@ -607,7 +497,6 @@
                     { q: '¿Qué operador lógico niega una condición?', options: ['AND', 'NOT', 'OR', 'BETWEEN'], answer: 1, exp: 'Invierte el booleano. NOT TRUE pasa a ser FALSE y viceversa.' }
                 ]
             },
-
             'sri_1': {
                 title: 'Servicios de Red e Internet - Test 1',
                 questions: [
@@ -1137,228 +1026,293 @@
                     { q: '¿Qué define la sostenibilidad empresarial avanzada?', options: ['Solo beneficios', 'Solo medio ambiente', 'Solo innovación', 'Integración ambiental, social y gobernanza'], answer: 3, exp: 'Es el estándar ESG (Environmental, Social, and Governance), que exige no solo ser verde, sino tratar bien a las personas y estar dirigido éticamente.' }
                 ]
             }
-
         };
 
-        // Estado del test
+        // --- LÓGICA DE EXAMEN ---
         let currentTestId = null;
         let currentQuestionIndex = 0;
-        let score = 0;
-        let answeredQuestions = 0;
+        let userAnswers = []; 
 
-        // Función para mostrar/ocultar el contenido de las asignaturas
-        function toggleSubject(subjectId) {
-            const content = document.getElementById(`content-${subjectId}`);
-            const icon = document.getElementById(`icon-${subjectId}`);
-            content.classList.toggle('active');
-            icon.classList.toggle('active');
+        function escapeHTML(str) {
+            if (typeof str !== 'string') return str;
+            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
 
-        // Abre el modal y prepara el estado inicial
-        function openTest(testId) {
-            if (!testDB[testId]) {
-                alert("Ese test aún no está subido.");
-                return;
-            }
+        // Dibuja las asignaturas en la pantalla principal
+        function renderSubjects() {
+            const container = document.getElementById('subjects-container');
+            let html = '';
 
-            currentTestId = testId;
+            subjectsConfig.forEach(subject => {
+                let testsHtml = '';
+                if (subject.tests.length > 0) {
+                    subject.tests.forEach(test => {
+                        testsHtml += `
+                            <div class="bg-gray-800 p-4 rounded border border-gray-600 flex justify-between items-center hover:bg-gray-700 transition cursor-pointer" onclick="openTest('${test.id}')">
+                                <span class="font-medium text-gray-200">${test.title}</span>
+                                <button class="px-4 py-2 rounded text-sm font-bold bg-yellow-600 hover:bg-yellow-500 text-white focus:outline-none shadow transition">
+                                    Hacer Examen
+                                </button>
+                            </div>
+                        `;
+                    });
+                } else {
+                    testsHtml = `<div class="bg-gray-800 p-4 rounded border border-gray-600"><span class="text-gray-400">Esperando contenido...</span></div>`;
+                }
+
+                html += `
+                    <div class="bg-gray-800 rounded-lg shadow-sm border border-gray-700 overflow-hidden">
+                        <button class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-gray-700 transition" onclick="toggleSubject('${subject.id}')">
+                            <div class="flex items-center">
+                                <div class="bg-gray-900 border border-gray-600 p-3 rounded-full mr-4 ${subject.colorClass}">
+                                    <i class="${subject.icon} text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-100 text-left">${subject.title}</h3>
+                            </div>
+                            <i id="icon-${subject.id}" class="fas fa-chevron-down text-gray-500 rotate-icon"></i>
+                        </button>
+                        <div id="content-${subject.id}" class="subject-content bg-gray-900 border-t border-gray-700">
+                            <div class="p-6">
+                                <p class="text-gray-400 mb-4">${subject.desc}</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${testsHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function toggleSubject(id) {
+            document.getElementById(`content-${id}`).classList.toggle('active');
+            document.getElementById(`icon-${id}`).classList.toggle('active');
+        }
+
+        // Abre el examen en modal
+        function openTest(id) {
+            if (!testDB[id]) { console.error("Test no encontrado."); return; }
+            currentTestId = id;
             currentQuestionIndex = 0;
-            score = 0;
-            answeredQuestions = 0;
+            userAnswers = new Array(testDB[id].questions.length).fill(null);
             
-            const test = testDB[testId];
-            document.getElementById('modalTitle').innerText = test.title;
-            
+            document.getElementById('modalTitle').innerText = testDB[id].title;
             document.getElementById('testModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            document.getElementById('scoreDisplay').classList.add('hidden');
-            
             renderQuestion();
+            updateGrid();
         }
 
-        // Dibuja la pregunta actual en pantalla
+        // Dibuja la pregunta actual
         function renderQuestion() {
-            const test = testDB[currentTestId];
-            const totalQuestions = test.questions.length;
-            const qData = test.questions[currentQuestionIndex];
-            
-            document.getElementById('questionProgress').innerText = `Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}`;
+            const qData = testDB[currentTestId].questions[currentQuestionIndex];
+            document.getElementById('questionProgress').innerText = `Pregunta ${currentQuestionIndex + 1} de ${testDB[currentTestId].questions.length}`;
 
-            // Aplicamos escapeHTML al título de la pregunta
             let html = `
-                <div class="mb-6">
-                    <h4 class="text-lg font-bold text-gray-100 mb-4">${currentQuestionIndex + 1}. ${escapeHTML(qData.q)}</h4>
-                    <div class="space-y-3" id="optionsContainer">
+                <div class="mb-4">
+                    <h4 class="text-xl font-bold text-gray-100 mb-6 leading-relaxed">${currentQuestionIndex + 1}. ${escapeHTML(qData.q)}</h4>
+                    <div class="space-y-3">
             `;
 
-            // Aplicamos escapeHTML a cada opción
+            let savedAnswer = userAnswers[currentQuestionIndex];
             qData.options.forEach((opt, idx) => {
+                let isChecked = (savedAnswer === idx) ? 'checked' : '';
                 html += `
-                    <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-600 cursor-pointer hover:bg-gray-700 transition option-label bg-gray-800" onclick="selectOption()">
-                        <input type="radio" name="currentQ" value="${idx}" class="form-radio h-5 w-5 text-blue-500 focus:ring-blue-500 bg-gray-700 border-gray-500">
-                        <span class="text-gray-200 font-medium">${escapeHTML(opt)}</span>
+                    <label class="flex items-center space-x-3 p-4 rounded-lg border border-gray-600 cursor-pointer hover:bg-gray-700 transition bg-gray-800 option-label shadow-sm">
+                        <input type="radio" name="currentQ" value="${idx}" ${isChecked} onchange="saveAnswer()" class="exam-radio form-radio h-5 w-5 text-yellow-500 focus:ring-yellow-500 bg-gray-700 border-gray-500">
+                        <span class="text-gray-200 text-lg">${escapeHTML(opt)}</span>
                     </label>
                 `;
             });
 
-            html += `
-                    </div>
-                </div>
-                <!-- Zona de feedback oculta hasta que se pulse Comprobar -->
-                <div id="feedbackBox" class="hidden rounded-lg p-4 mt-6 border"></div>
-            `;
-
+            html += `</div></div>`;
             document.getElementById('modalContent').innerHTML = html;
-
-            // Footer con botón Comprobar deshabilitado al inicio
-            document.getElementById('actionButtons').innerHTML = `
-                <button id="btnCheck" disabled onclick="checkAnswer()" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow-md transition">
-                    Comprobar
-                </button>
-            `;
+            renderFooter();
+            updateGrid(); // Refrescar el highlight del panel derecho
         }
 
-        // Habilita el botón de comprobar si se selecciona una opción
-        function selectOption() {
+        // Guarda respuesta sin evaluar si está bien o mal
+        function saveAnswer() {
             const selected = document.querySelector('input[name="currentQ"]:checked');
             if (selected) {
-                document.getElementById('btnCheck').disabled = false;
+                userAnswers[currentQuestionIndex] = parseInt(selected.value);
+                updateGrid();
             }
         }
 
-        // Comprueba la respuesta y muestra el feedback
-        function checkAnswer() {
-            const selected = document.querySelector('input[name="currentQ"]:checked');
-            if (!selected) return;
-
-            const selectedVal = parseInt(selected.value);
-            const test = testDB[currentTestId];
-            const qData = test.questions[currentQuestionIndex];
-            const labels = document.querySelectorAll('.option-label');
+        // Limpiar para dejar en blanco
+        function clearSelection() {
             const inputs = document.querySelectorAll('input[name="currentQ"]');
-            const feedbackBox = document.getElementById('feedbackBox');
-            
-            // Bloquear inputs para que no cambie la respuesta
-            inputs.forEach(input => input.disabled = true);
-
-            let isCorrect = (selectedVal === qData.answer);
-            
-            if (isCorrect) {
-                score++;
-                selected.closest('label').classList.replace('border-gray-600', 'border-green-500');
-                selected.closest('label').classList.replace('bg-gray-800', 'bg-green-900');
-                selected.closest('label').classList.replace('hover:bg-gray-700', 'bg-opacity-40');
-                
-                feedbackBox.className = "rounded-lg p-4 mt-6 border border-green-500 bg-green-900 bg-opacity-30";
-                // Aplicamos escapeHTML a la explicación también
-                feedbackBox.innerHTML = `
-                    <div class="flex items-start">
-                        <i class="fas fa-check-circle text-green-400 text-xl mt-0.5 mr-3"></i>
-                        <div>
-                            <h5 class="text-green-300 font-bold mb-1">¡Correcto!</h5>
-                            <p class="text-green-200 text-sm leading-relaxed">${escapeHTML(qData.exp)}</p>
-                        </div>
-                    </div>
-                `;
-            } else {
-                // Marcar el error
-                selected.closest('label').classList.replace('border-gray-600', 'border-red-500');
-                selected.closest('label').classList.replace('bg-gray-800', 'bg-red-900');
-                selected.closest('label').classList.replace('hover:bg-gray-700', 'bg-opacity-40');
-                
-                // Mostrar cuál era la buena
-                labels[qData.answer].classList.replace('border-gray-600', 'border-green-500');
-                labels[qData.answer].classList.replace('bg-gray-800', 'bg-green-900');
-                labels[qData.answer].classList.add('bg-opacity-30');
-
-                feedbackBox.className = "rounded-lg p-4 mt-6 border border-red-500 bg-red-900 bg-opacity-30";
-                // Aplicamos escapeHTML a la explicación también
-                feedbackBox.innerHTML = `
-                    <div class="flex items-start">
-                        <i class="fas fa-times-circle text-red-400 text-xl mt-0.5 mr-3"></i>
-                        <div>
-                            <h5 class="text-red-300 font-bold mb-1">Incorrecto</h5>
-                            <p class="text-red-200 text-sm leading-relaxed">${escapeHTML(qData.exp)}</p>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            feedbackBox.classList.remove('hidden');
-
-            // Cambiar botones del footer
-            const isLastQuestion = (currentQuestionIndex === test.questions.length - 1);
-            const nextBtnText = isLastQuestion ? 'Finalizar Test' : 'Siguiente Pregunta <i class="fas fa-arrow-right ml-2"></i>';
-            const btnColor = isLastQuestion ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600';
-            
-            document.getElementById('actionButtons').innerHTML = `
-                <button onclick="nextQuestion()" class="px-6 py-2 ${btnColor} text-white font-semibold rounded shadow-md transition flex items-center border border-gray-600">
-                    ${nextBtnText}
-                </button>
-            `;
+            inputs.forEach(input => input.checked = false);
+            userAnswers[currentQuestionIndex] = null;
+            updateGrid();
         }
 
-        // Pasa a la siguiente pregunta o finaliza
-        function nextQuestion() {
-            const test = testDB[currentTestId];
-            currentQuestionIndex++;
-            
-            if (currentQuestionIndex < test.questions.length) {
-                renderQuestion();
-            } else {
-                showFinalResults();
-            }
+        // Navegación secuencial
+        function navigate(dir) {
+            currentQuestionIndex += dir;
+            renderQuestion();
         }
 
-        // Pantalla final del test
-        function showFinalResults() {
-            const test = testDB[currentTestId];
-            const total = test.questions.length;
-            const percentage = ((score / total) * 100).toFixed(1);
-            let resultClass = percentage >= 50 ? 'text-green-400' : 'text-red-400';
-            let message = percentage >= 50 ? '¡Buen trabajo! Has superado el simulacro.' : 'Necesitas repasar más la teoría. ¡No te rindas!';
+        // Ir a pregunta concreta desde la cuadrícula
+        function goTo(index) {
+            currentQuestionIndex = index;
+            renderQuestion();
+        }
+
+        // Cuadrícula derecha de navegación
+        function updateGrid() {
+            const grid = document.getElementById('gridNavigator');
+            let html = '';
+            userAnswers.forEach((ans, i) => {
+                let baseClass = "w-10 h-10 flex items-center justify-center rounded font-bold text-sm cursor-pointer transition ";
+                
+                // Estilo según estado
+                if (ans !== null) {
+                    baseClass += "bg-blue-600 text-white border border-blue-500"; // Respondida
+                } else {
+                    baseClass += "bg-gray-800 text-gray-400 border border-gray-600 hover:bg-gray-700"; // En blanco
+                }
+
+                // Resaltar la pregunta actual (borde amarillo brillante)
+                if (i === currentQuestionIndex) {
+                    baseClass += " ring-2 ring-yellow-400 ring-offset-2 ring-offset-gray-900";
+                }
+
+                html += `<div onclick="goTo(${i})" class="${baseClass}">${i + 1}</div>`;
+            });
+            grid.innerHTML = html;
+        }
+
+        function renderFooter() {
+            const box = document.getElementById('actionButtons');
+            const total = testDB[currentTestId].questions.length;
+            const isFirst = (currentQuestionIndex === 0);
+            const isLast = (currentQuestionIndex === total - 1);
+
+            let btns = '';
+            if (!isFirst) btns += `<button onclick="navigate(-1)" class="px-5 py-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded transition shadow"><i class="fas fa-arrow-left"></i> Anterior</button>`;
+            if (!isLast) btns += `<button onclick="navigate(1)" class="px-5 py-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded transition shadow">Siguiente <i class="fas fa-arrow-right"></i></button>`;
+            else btns += `<button onclick="finishExam()" class="px-5 py-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded transition shadow md:hidden">Entregar</button>`; // Botón extra para móviles
             
-            document.getElementById('questionProgress').innerText = "Test Finalizado";
-            
+            box.innerHTML = btns;
+        }
+
+        function confirmExit() {
             document.getElementById('modalContent').innerHTML = `
-                <div class="text-center py-10">
-                    <div class="text-6xl mb-4 ${percentage >= 50 ? 'text-green-500' : 'text-red-500'}">
-                        <i class="fas ${percentage >= 50 ? 'fa-award' : 'fa-book-reader'}"></i>
-                    </div>
-                    <h2 class="text-3xl font-bold text-gray-100 mb-2">Resultados</h2>
-                    <p class="text-gray-400 mb-6">${message}</p>
-                    
-                    <div class="bg-gray-800 rounded-lg p-6 max-w-sm mx-auto border border-gray-700 shadow-sm">
-                        <div class="text-5xl font-black ${resultClass} mb-2">${score} <span class="text-2xl text-gray-500">/ ${total}</span></div>
-                        <div class="text-sm text-gray-400 font-medium uppercase tracking-wide">Aciertos</div>
-                        <div class="mt-4 pt-4 border-t border-gray-700">
-                            <span class="font-bold text-gray-300">Porcentaje:</span> 
-                            <span class="${resultClass} font-bold">${percentage}%</span>
-                        </div>
+                <div class="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-in">
+                    <h2 class="text-3xl font-bold text-red-500 mb-4"><i class="fas fa-exclamation-triangle"></i> ¿Seguro que quieres salir?</h2>
+                    <p class="text-gray-300 mb-8 text-lg">Perderás todo el progreso de este examen.</p>
+                    <div class="flex gap-4">
+                        <button onclick="closeModal()" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded shadow transition">Sí, salir</button>
+                        <button onclick="renderQuestion()" class="px-6 py-3 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded shadow transition">Cancelar</button>
                     </div>
                 </div>
             `;
-            
-            document.getElementById('actionButtons').innerHTML = `
-                <button onclick="closeModal()" class="px-6 py-2 bg-gray-700 text-white font-semibold rounded hover:bg-gray-600 border border-gray-600 shadow-md transition">
-                    Cerrar y volver al menú
-                </button>
+            document.getElementById('modalFooter').innerHTML = '';
+        }
+
+        function finishExam() {
+            const blanks = userAnswers.filter(a => a === null).length;
+            let msg = blanks > 0 
+                ? `Tienes <strong>${blanks} pregunta(s) en blanco</strong>.<br>¿Seguro que quieres entregar el examen?`
+                : `¿Estás seguro de entregar el examen para su corrección?`;
+
+            document.getElementById('modalContent').innerHTML = `
+                <div class="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-in">
+                    <h2 class="text-3xl font-bold text-yellow-500 mb-4"><i class="fas fa-flag-checkered"></i> Confirmar Entrega</h2>
+                    <p class="text-gray-300 mb-8 text-lg">${msg}</p>
+                    <div class="flex gap-4">
+                        <button onclick="calculateScore()" class="px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded shadow transition">Sí, entregar</button>
+                        <button onclick="renderQuestion()" class="px-6 py-3 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded shadow transition">Volver al examen</button>
+                    </div>
+                </div>
             `;
+            document.getElementById('modalFooter').innerHTML = '';
         }
 
-        function closeModal() {
-            const modal = document.getElementById('testModal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            currentTestId = null;
+        // Lógica de corrección final
+        function calculateScore() {
+            const test = testDB[currentTestId];
+            const total = test.questions.length;
+            let correct = 0, incorrect = 0, blanks = 0;
+
+            userAnswers.forEach((ans, i) => {
+                if (ans === null) blanks++;
+                else if (ans === test.questions[i].answer) correct++;
+                else incorrect++;
+            });
+
+            // Matemáticas: +1 por acierto, -0.33 por fallo
+        let rawScore = correct - (incorrect * 0.3333333);
+        if (rawScore < 0) rawScore = 0; // El examen no puede restar por debajo de 0
+        
+        const gradeBase10 = (rawScore / total) * 10;
+        const passed = gradeBase10 >= 5.0;
+
+        document.getElementById('questionProgress').innerText = "Corrección Oficial";
+        
+        // Ocultar columna derecha de navegación en resultados
+        const gridCol = document.getElementById('gridColumn');
+        if (gridCol) {
+            gridCol.classList.remove('md:flex');
+            gridCol.classList.add('hidden');
         }
 
-        document.getElementById('testModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
+        // Dibujar resultados
+        let resultHtml = `
+            <div class="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-in">
+                <h2 class="text-4xl font-extrabold mb-2 ${passed ? 'text-green-500' : 'text-red-500'}">
+                    ${passed ? '¡Aprobado!' : 'Suspenso'}
+                </h2>
+                <div class="text-7xl font-black text-white mb-6">
+                    ${gradeBase10.toFixed(2)} <span class="text-3xl text-gray-500">/ 10</span>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4 w-full max-w-md mb-8">
+                    <div class="bg-gray-700 p-4 rounded-lg border border-gray-600">
+                        <div class="text-3xl text-green-400 font-bold">${correct}</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wide mt-1">Aciertos (+1)</div>
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg border border-gray-600">
+                        <div class="text-3xl text-red-400 font-bold">${incorrect}</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wide mt-1">Fallos (-0.33)</div>
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg border border-gray-600">
+                        <div class="text-3xl text-gray-400 font-bold">${blanks}</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wide mt-1">En Blanco (0)</div>
+                    </div>
+                </div>
+
+                <button onclick="closeModal()" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition">
+                    Cerrar y Volver al Menú
+                </button>
+            </div>
+        `;
+        
+        document.getElementById('modalContent').innerHTML = resultHtml;
+        document.getElementById('modalFooter').innerHTML = ''; // Limpiar botones del pie
+    }
+
+    function closeModal() {
+        document.getElementById('testModal').classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Restaurar scroll del body
+        
+        // Restaurar visualización de la cuadrícula si la ocultamos
+        const gridCol = document.getElementById('gridColumn');
+        if (gridCol) {
+            gridCol.classList.remove('hidden');
+            gridCol.classList.add('md:flex');
+        }
+    }
+
+    // Cargar las asignaturas al iniciar la página
+    window.onload = () => {
+        renderSubjects();
+    };
+
     </script>
 </body>
 </html>

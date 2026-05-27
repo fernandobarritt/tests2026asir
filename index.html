@@ -1491,12 +1491,6 @@
             `;
         }
 
-        document.getElementById('testModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
         function launchFailedTest() {
             // Creamos un sub-test temporal en la base de datos que referencia al padre
             isFailedTestMode = true;

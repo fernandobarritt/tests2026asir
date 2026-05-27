@@ -1255,6 +1255,9 @@
         let currentQuestionIndex = 0;
         let score = 0;
         let answeredQuestions = 0;
+        // Variables para la gestión de preguntas falladas
+        let failedQuestionsList = [];
+        let isFailedTestMode = false;
 
         // Función para mostrar/ocultar el contenido de las asignaturas
         function toggleSubject(subjectId) {
@@ -1266,7 +1269,12 @@
 
         // Abre el modal y prepara el estado inicial
         function openTest(testId) {
-            if (!testDB[testId]) {
+            // Si no estamos repitiendo falladas, es un test limpio: reseteamos la lista
+            if (!isFailedTestMode) {
+                failedQuestionsList = [];
+            }
+
+            if (!testDB[testId] && testId !== 'temporary_failed_test') {
                 alert("Ese test aún no está subido.");
                 return;
             }
@@ -1276,8 +1284,9 @@
             score = 0;
             answeredQuestions = 0;
             
-            const test = testDB[testId];
-            document.getElementById('modalTitle').innerText = test.title;
+            // Si es el test de falladas, el título cambia dinámicamente
+            const titleText = testId === 'temporary_failed_test' ? "Repaso de preguntas falladas" : testDB[testId].title;
+            document.getElementById('modalTitle').innerText = titleText;
             
             document.getElementById('testModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -1289,9 +1298,11 @@
 
         // Dibuja la pregunta actual en pantalla
         function renderQuestion() {
+            // MAPEO DE PREGUNTAS (Reemplazar el inicio por esto)
             const test = testDB[currentTestId];
-            const totalQuestions = test.questions.length;
-            const qData = test.questions[currentQuestionIndex];
+            const totalQuestions = isFailedTestMode ? failedQuestionsList.length : test.questions.length;
+            const realQuestionIndex = isFailedTestMode ? failedQuestionsList[currentQuestionIndex] : currentQuestionIndex;
+            const qData = isFailedTestMode ? testDB[testDB[currentTestId].originalTestId].questions[realQuestionIndex] : test.questions[currentQuestionIndex];
             
             document.getElementById('questionProgress').innerText = `Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}`;
 
@@ -1344,7 +1355,10 @@
 
             const selectedVal = parseInt(selected.value);
             const test = testDB[currentTestId];
-            const qData = test.questions[currentQuestionIndex];
+            
+            // MAPEO DE LA PREGUNTA (La corrección está aquí)
+            const realQuestionIndex = isFailedTestMode ? failedQuestionsList[currentQuestionIndex] : currentQuestionIndex;
+            const qData = isFailedTestMode ? testDB[test.originalTestId].questions[realQuestionIndex] : test.questions[currentQuestionIndex];
             const labels = document.querySelectorAll('.option-label');
             const inputs = document.querySelectorAll('input[name="currentQ"]');
             const feedbackBox = document.getElementById('feedbackBox');
@@ -1372,6 +1386,10 @@
                     </div>
                 `;
             } else {
+                // REGISTRAR FALLO (Solo si NO estamos ya en el test de falladas)
+                if (!isFailedTestMode && !failedQuestionsList.includes(currentQuestionIndex)) { 
+                    failedQuestionsList.push(currentQuestionIndex); 
+                }
                 // Marcar el error
                 selected.closest('label').classList.replace('border-gray-600', 'border-red-500');
                 selected.closest('label').classList.replace('bg-gray-800', 'bg-red-900');
@@ -1397,8 +1415,9 @@
             
             feedbackBox.classList.remove('hidden');
 
-            // Cambiar botones del footer
-            const isLastQuestion = (currentQuestionIndex === test.questions.length - 1);
+           // Cambiar botones del footer (Reemplazar este fragmento al final de checkAnswer)
+            const totalLength = isFailedTestMode ? failedQuestionsList.length : test.questions.length;
+            const isLastQuestion = (currentQuestionIndex === totalLength - 1);
             const nextBtnText = isLastQuestion ? 'Finalizar Test' : 'Siguiente Pregunta <i class="fas fa-arrow-right ml-2"></i>';
             const btnColor = isLastQuestion ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600';
             
@@ -1411,10 +1430,10 @@
 
         // Pasa a la siguiente pregunta o finaliza
         function nextQuestion() {
-            const test = testDB[currentTestId];
+            const totalLength = isFailedTestMode ? failedQuestionsList.length : testDB[currentTestId].questions.length;
             currentQuestionIndex++;
             
-            if (currentQuestionIndex < test.questions.length) {
+            if (currentQuestionIndex < totalLength) {
                 renderQuestion();
             } else {
                 showFinalResults();
@@ -1424,12 +1443,23 @@
         // Pantalla final del test
         function showFinalResults() {
             const test = testDB[currentTestId];
-            const total = test.questions.length;
+            // Corrección vital: el total depende de si estamos en el test normal o en el de falladas
+            const total = isFailedTestMode ? failedQuestionsList.length : test.questions.length;
             const percentage = ((score / total) * 100).toFixed(1);
             let resultClass = percentage >= 50 ? 'text-green-400' : 'text-red-400';
             let message = percentage >= 50 ? '¡Buen trabajo! Has superado el simulacro.' : 'Necesitas repasar más la teoría. ¡No te rindas!';
             
             document.getElementById('questionProgress').innerText = "Test Finalizado";
+            
+            // Lógica del botón de falladas creada ANTES del HTML
+            let failedButtonHtml = '';
+            if (failedQuestionsList.length > 0 && !isFailedTestMode) {
+                failedButtonHtml = `
+                    <button onclick="launchFailedTest()" class="w-full px-6 py-3 bg-yellow-600 text-white font-bold rounded hover:bg-yellow-500 border border-yellow-700 shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fas fa-redo"></i> Repetir solo las ${failedQuestionsList.length} falladas
+                    </button>
+                `;
+            }
             
             document.getElementById('modalContent').innerHTML = `
                 <div class="text-center py-10">
@@ -1447,6 +1477,10 @@
                             <span class="${resultClass} font-bold">${percentage}%</span>
                         </div>
                     </div>
+
+                    <div class="max-w-sm mx-auto mt-4">
+                        ${failedButtonHtml}
+                    </div>
                 </div>
             `;
             
@@ -1457,18 +1491,36 @@
             `;
         }
 
-        function closeModal() {
-            const modal = document.getElementById('testModal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            currentTestId = null;
-        }
-
         document.getElementById('testModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
         });
+
+        function launchFailedTest() {
+            // Creamos un sub-test temporal en la base de datos que referencia al padre
+            isFailedTestMode = true;
+            testDB['temporary_failed_test'] = {
+                title: "Preguntas Falladas",
+                originalTestId: currentTestId, // Guarda el ID del test real para leer sus preguntas
+                questions: [] // No necesita preguntas físicas, las leeremos mapeadas
+            };
+            
+            // Volvemos a abrir el test apuntando al temporal de falladas
+            openTest('temporary_failed_test');
+        }
+
+        // Modifica también tu función existente closeModal() para limpiar el estado de falladas al salir
+        function closeModal() {
+            const modal = document.getElementById('testModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            
+            // Limpieza de banderas de fallos (Añadir esto)
+            isFailedTestMode = false;
+            delete testDB['temporary_failed_test'];
+            currentTestId = null;
+        }
     </script>
 </body>
 </html>
